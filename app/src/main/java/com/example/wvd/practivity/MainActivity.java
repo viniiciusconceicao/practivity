@@ -25,8 +25,9 @@ public class MainActivity extends Activity {
         fragment1_vertical = (FrameLayout) findViewById(R.id.fragment1_vertical);
 
         FragmentCategory aFrag = new FragmentCategory();
-        getFragmentManager().beginTransaction()
-                .replace(R.id.fragment1_vertical, aFrag).commit();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment1_vertical,aFrag);
+        fragmentTransaction.commit();
     }
 
     @Override
