@@ -2,6 +2,7 @@ package com.example.wvd.practivity;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,18 +42,23 @@ public class FragmentCategory extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
 
         super.onCreateView(inflater, container, savedInstanceState);
+        final View view = inflater.inflate(R.layout.category_fragment, container, false);
                 // create your view using LayoutInflater
-        return inflater.inflate(R.layout.category_fragment, container, false);
-    }
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        rv = (RecyclerView)view.findViewById(R.id.rv);
+
+        // 2. set layoutManger
+        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         initializeData();
-        rv = (RecyclerView)getView().findViewById(R.id.rv);
         // do your variables initialisations here except Views!!!
         RVAdapter adapter = new RVAdapter(categories);
         rv.setAdapter(adapter);
 
+        return view;
+    }
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState){
