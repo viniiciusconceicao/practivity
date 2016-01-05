@@ -8,6 +8,4 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar"></include>
 
-    <TextView android:text="Hello World!!!!!!!!!!!!" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 </RelativeLayout>
