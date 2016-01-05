@@ -10,7 +10,7 @@ public class Category {
 
     String name;
 
-    Category(String name) {
+    public Category(String name) {
         this.name = name;
     }
 
@@ -22,17 +22,4 @@ public class Category {
         this.name = name;
     }
 
-    private List<Category> persons;
-
-    // This method creates an ArrayList that has three Person objects
-// Checkout the project associated with this tutorial on Github if
-// you want to use the same images.
-    private void initializeData() {
-        persons = new ArrayList<>();
-        persons.add(new Category("Languages"));
-        persons.add(new Category("Martial Arts"));
-        persons.add(new Category("Dance"));
-        persons.add(new Category("Handicraft"));
-
-    }
 }

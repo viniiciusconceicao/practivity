@@ -32,7 +32,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CategoryViewHolder
 
     List<Category> categories;
 
-    RVAdapter(List<Category> categories){
+    public RVAdapter(List<Category> categories){
         this.categories = categories;
     }
 
@@ -52,6 +52,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CategoryViewHolder
     public void onBindViewHolder(CategoryViewHolder categoryViewHolder, int i) {
         categoryViewHolder.categoryName.setText(categories.get(i).getName());
 
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
     }
 
 }
