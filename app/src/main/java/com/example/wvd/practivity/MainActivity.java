@@ -1,15 +1,18 @@
 package com.example.wvd.practivity;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.Toolbar;
 
 public class MainActivity extends Activity {
 
     private Toolbar toolbar;
+    private FrameLayout fragment1_vertical;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,12 @@ public class MainActivity extends Activity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar); // Attaching the layout to the toolbar object
         setActionBar(toolbar);
+
+        fragment1_vertical = (FrameLayout) findViewById(R.id.fragment1_vertical);
+
+        FragmentCategory aFrag = new FragmentCategory();
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragment1_vertical, aFrag).commit();
     }
 
     @Override

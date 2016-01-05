@@ -40,7 +40,6 @@ public class FragmentCategory extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
 
-
         super.onCreateView(inflater, container, savedInstanceState);
                 // create your view using LayoutInflater
         return inflater.inflate(R.layout.category_fragment, container, false);
@@ -48,17 +47,16 @@ public class FragmentCategory extends Fragment {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initializeData();
+        rv = (RecyclerView)getView().findViewById(R.id.rv);
         // do your variables initialisations here except Views!!!
         RVAdapter adapter = new RVAdapter(categories);
-
-               rv.setAdapter(adapter);
-
+        rv.setAdapter(adapter);
 
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         // initialise your views
-        rv = (RecyclerView)getView().findViewById(R.id.rv);
     }
 }
