@@ -30,7 +30,7 @@ public class Category {
     }
 
     public void addActivities(Activities act){
-        activities.add(act);
+        activities.add(act) ;
     }
 
     public String getName() {
