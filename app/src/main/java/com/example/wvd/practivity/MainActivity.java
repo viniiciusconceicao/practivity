@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
         toolbar = (Toolbar) findViewById(R.id.toolbar); // Attaching the layout to the toolbar object
         setActionBar(toolbar);
 
-        fragment1_vertical = (FrameLayout) findViewById(R.id.fragment1_vertical);
+        fragment1_vertical = (FrameLayout)findViewById(R.id.fragment1_vertical);
 
         FragmentCategory aFrag = new FragmentCategory();
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
