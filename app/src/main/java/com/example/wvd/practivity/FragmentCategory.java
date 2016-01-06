@@ -43,10 +43,9 @@ public class FragmentCategory extends Fragment {
 
         super.onCreateView(inflater, container, savedInstanceState);
         final View view = inflater.inflate(R.layout.category_fragment, container, false);
-                // create your view using LayoutInflater
+        // create your view using LayoutInflater
 
         rv = (RecyclerView)view.findViewById(R.id.rv);
-
         // 2. set layoutManger
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         initializeData();

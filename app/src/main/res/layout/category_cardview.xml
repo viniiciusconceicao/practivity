@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        card_view:cardCornerRadius="5dp"
+        android:layout_margin="5dp"
         android:id="@+id/cv">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            >
+            android:padding="16dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -22,8 +25,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="16dp"
-                android:background="@mipmap/ic_launcher"
-                />
+                android:background="@mipmap/ic_launcher"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -31,8 +33,8 @@
                 android:id="@+id/category_name"
                 android:layout_toRightOf="@+id/category_photo"
                 android:layout_alignParentTop="true"
-                android:textSize="30sp"
-                />
+                android:text="@string/app_name"
+                android:textSize="20sp"/>
 
         </RelativeLayout>
 
