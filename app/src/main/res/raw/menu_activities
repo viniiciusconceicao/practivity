@@ -1,0 +1,64 @@
+{"categories": [
+  {
+    "id": "1",
+    "value": "Languages",
+      "menuitems": [
+        {
+          "value": "English"
+        },
+        {
+          "value": "Spanish"
+        },
+        {
+          "value": "German"
+        }
+      ]
+  },
+  {
+    "id": "2",
+    "value": "Martial Arts",
+    "menuitems": [
+      {
+        "value": "Judo"
+      },
+      {
+        "value": "Taekwondo"
+      },
+      {
+        "value": "Jiu-Jitsu"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "value": "Dance",
+    "menuitems": [
+      {
+        "value": "Forro"
+      },
+      {
+        "value": "Flamenco"
+      },
+      {
+        "value": "Saloon"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "value": "Handicraft",
+    "menuitems": [
+      {
+        "value": "PaperPlanes"
+      },
+      {
+        "value": "Paiting"
+      },
+      {
+        "value": "Sculpting"
+      }
+    ]
+  },
+
+]
+}
