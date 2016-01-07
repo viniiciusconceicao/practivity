@@ -11,6 +11,9 @@
         },
         {
           "value": "German"
+        },
+        {
+          "value": "Italian"
         }
       ]
   },
@@ -34,7 +37,7 @@
     "value": "Dance",
     "menuitems": [
       {
-        "value": "Forro"
+        "value": "Forró"
       },
       {
         "value": "Flamenco"
@@ -59,6 +62,22 @@
       }
     ]
   },
-
-]
+  {
+      "id": "5",
+      "value": "Musical Instrument",
+      "menuitems": [
+        {
+          "value": "Acoustic Guitar"
+        },
+        {
+          "value": "Electric Guitar"
+        },
+        {
+          "value": "Violin"
+        },
+        {
+          "value": "Ukulele"
+        }
+      ]
+    }]
 }
