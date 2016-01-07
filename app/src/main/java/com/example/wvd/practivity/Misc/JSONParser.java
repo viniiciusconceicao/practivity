@@ -2,7 +2,6 @@ package com.example.wvd.practivity.Misc;
 
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.wvd.practivity.Data.Activities;
 import com.example.wvd.practivity.Data.Category;

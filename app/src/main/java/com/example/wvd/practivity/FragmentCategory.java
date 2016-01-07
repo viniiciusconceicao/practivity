@@ -5,19 +5,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v7.widget.RecyclerView;
 
-import android.support.v7.widget.CardView;
-
-import com.example.wvd.practivity.Adapter.RVAdapter;
+import com.example.wvd.practivity.Adapter.CategoriesAdapter;
 import com.example.wvd.practivity.Data.Category;
 import com.example.wvd.practivity.Misc.JSONParser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,7 +45,7 @@ public class FragmentCategory extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         initializeData();
         // do your variables initialisations here except Views!!!
-        RVAdapter adapter = new RVAdapter(categories,mContext);
+        CategoriesAdapter adapter = new CategoriesAdapter(categories,mContext);
         rv.setAdapter(adapter);
 
         return view;

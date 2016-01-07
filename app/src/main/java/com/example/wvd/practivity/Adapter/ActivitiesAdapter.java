@@ -1,15 +1,15 @@
 package com.example.wvd.practivity.Adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wvd.practivity.Data.Activities;
 import com.example.wvd.practivity.Data.Category;
 import com.example.wvd.practivity.R;
 
@@ -19,25 +19,25 @@ import java.util.List;
  * Created by Vi on 1/5/2016.
  */
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CategoryViewHolder> {
+public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.ActivityViewHolder> {
 
-    private static final String TAG = "RVADapter";
+    private static final String TAG = "ActivitiesADapter";
 
     private Context mContext;
 
-    public static class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ActivityViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CardView cv;
-        TextView categoryName;
-        TextView categoryCount;
+        TextView activityName;
+        TextView activityCount;
         Context mContext;
 
-        CategoryViewHolder(View itemView,Context context) {
+        ActivityViewHolder(View itemView, Context context) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cv);
             itemView.setClickable(true);
             itemView.setOnClickListener(this);
-            categoryName = (TextView)itemView.findViewById(R.id.category_name);
-            categoryCount = (TextView)itemView.findViewById(R.id.category_counter);
+            activityName = (TextView)itemView.findViewById(R.id.category_name);
+            activityCount = (TextView)itemView.findViewById(R.id.category_counter);
             mContext=context;
         }
 
@@ -49,29 +49,29 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CategoryViewHolder
         }
     }
 
-    List<Category> categories;
+    List<Activities> activities;
 
-    public RVAdapter(List<Category> categories,Context context){
-        this.categories = categories;
+    public ActivitiesAdapter(List<Activities> activities, Context context){
+        this.activities = activities;
         this.mContext=context;
     }
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        return activities.size();
     }
 
     @Override
-    public CategoryViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ActivityViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.category_cardview, viewGroup, false);
-        CategoryViewHolder cvh = new CategoryViewHolder(v,mContext);
+        ActivityViewHolder cvh = new ActivityViewHolder(v,mContext);
         return cvh;
     }
 
     @Override
-    public void onBindViewHolder(CategoryViewHolder categoryViewHolder, int i) {
-        categoryViewHolder.categoryName.setText(categories.get(i).getName());
-        categoryViewHolder.categoryCount.setText(String.valueOf(categories.get(i).getActivities().size()));
+    public void onBindViewHolder(ActivityViewHolder categoryViewHolder, int i) {
+        categoryViewHolder.activityName.setText(activities.get(i).getName());
+        //categoryViewHolder.activityCount.setText(String.valueOf(activities.get(i).getActivities().size()));
     }
 
     @Override
