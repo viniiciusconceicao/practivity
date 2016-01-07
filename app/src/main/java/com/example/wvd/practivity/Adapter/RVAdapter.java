@@ -22,11 +22,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CategoryViewHolder
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         TextView categoryName;
+        TextView categoryCount;
 
         CategoryViewHolder(View itemView) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cv);
             categoryName = (TextView)itemView.findViewById(R.id.category_name);
+            categoryCount = (TextView)itemView.findViewById(R.id.category_counter);
         }
     }
 
@@ -51,7 +53,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CategoryViewHolder
     @Override
     public void onBindViewHolder(CategoryViewHolder categoryViewHolder, int i) {
         categoryViewHolder.categoryName.setText(categories.get(i).getName());
-
+        categoryViewHolder.categoryCount.setText(String.valueOf(categories.get(i).getActivities().size()));
     }
 
     @Override

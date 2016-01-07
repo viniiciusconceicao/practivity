@@ -12,6 +12,8 @@ import android.widget.FrameLayout;
 import android.widget.SearchView;
 import android.widget.Toolbar;
 
+import com.example.wvd.practivity.Misc.JSONParser;
+
 public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
@@ -36,6 +38,7 @@ public class MainActivity extends Activity {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment1_vertical, aFrag);
         fragmentTransaction.commit();
+
     }
 
     @Override
