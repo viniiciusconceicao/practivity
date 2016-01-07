@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wvd.practivity.Data.Category;
 import com.example.wvd.practivity.R;
@@ -18,13 +19,13 @@ import java.util.List;
  * Created by Vi on 1/5/2016.
  */
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CategoryViewHolder>{
+public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CategoryViewHolder> {
 
     private static final String TAG = "RVADapter";
 
     private Context mContext;
 
-    public static class CategoryViewHolder extends RecyclerView.ViewHolder {
+    public static class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CardView cv;
         TextView categoryName;
         TextView categoryCount;
@@ -33,9 +34,18 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CategoryViewHolder
         CategoryViewHolder(View itemView,Context context) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cv);
+            itemView.setClickable(true);
+            itemView.setOnClickListener(this);
             categoryName = (TextView)itemView.findViewById(R.id.category_name);
             categoryCount = (TextView)itemView.findViewById(R.id.category_counter);
             mContext=context;
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            Toast.makeText(mContext,"The Item Clicked is: "+getPosition(), Toast.LENGTH_SHORT).show();
+
         }
     }
 
