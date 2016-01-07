@@ -1,5 +1,6 @@
 package com.example.wvd.practivity.Adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
 import android.support.v7.widget.CardView;
@@ -19,23 +20,30 @@ import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CategoryViewHolder>{
 
+    private static final String TAG = "RVADapter";
+
+    private Context mContext;
+
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         TextView categoryName;
         TextView categoryCount;
+        Context mContext;
 
-        CategoryViewHolder(View itemView) {
+        CategoryViewHolder(View itemView,Context context) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cv);
             categoryName = (TextView)itemView.findViewById(R.id.category_name);
             categoryCount = (TextView)itemView.findViewById(R.id.category_counter);
+            mContext=context;
         }
     }
 
     List<Category> categories;
 
-    public RVAdapter(List<Category> categories){
+    public RVAdapter(List<Category> categories,Context context){
         this.categories = categories;
+        this.mContext=context;
     }
 
     @Override
@@ -46,7 +54,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CategoryViewHolder
     @Override
     public CategoryViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.category_cardview, viewGroup, false);
-        CategoryViewHolder cvh = new CategoryViewHolder(v);
+        CategoryViewHolder cvh = new CategoryViewHolder(v,mContext);
         return cvh;
     }
 

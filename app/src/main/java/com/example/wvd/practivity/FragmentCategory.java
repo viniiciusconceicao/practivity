@@ -50,7 +50,7 @@ public class FragmentCategory extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         initializeData();
         // do your variables initialisations here except Views!!!
-        RVAdapter adapter = new RVAdapter(categories);
+        RVAdapter adapter = new RVAdapter(categories,mContext);
         rv.setAdapter(adapter);
 
         return view;
