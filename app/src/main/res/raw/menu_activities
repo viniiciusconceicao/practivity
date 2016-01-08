@@ -52,7 +52,7 @@
     "value": "Handicraft",
     "menuitems": [
       {
-        "value": "PaperPlanes"
+        "value": "Paper Planes"
       },
       {
         "value": "Paiting"
@@ -73,7 +73,7 @@
           "value": "Guitar"
         },
         {
-          "value": ""
+          "value": "Ukulele"
         }
       ]
     }]

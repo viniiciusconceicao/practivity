@@ -1,12 +1,13 @@
 package com.example.wvd.practivity.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Vi on 1/5/2016.
  */
-public class Category {
+public class Category implements Serializable {
 
     int category_id;
     String name;

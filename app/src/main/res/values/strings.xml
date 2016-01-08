@@ -2,5 +2,6 @@
     <string name="app_name">Practivity</string>
     <string name="welcome">Welcome to</string>
     <string name="category_activities_title">Categories</string>
+    <string name="activities_title">Activities</string>
     <string name="action_settings"></string>
 </resources>

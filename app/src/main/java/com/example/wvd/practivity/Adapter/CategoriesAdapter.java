@@ -31,7 +31,14 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         TextView categoryCount;
         Context mContext;
 
-        CategoryViewHolder(View itemView,Context context) {
+        public CategorieClickListener listener;
+
+        //listener passed to viewHolder
+        public interface CategorieClickListener {
+            void categorieOnClick(int position);
+        }
+
+        CategoryViewHolder(View itemView,Context context,CategorieClickListener listener) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cv);
             itemView.setClickable(true);
@@ -39,21 +46,26 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
             categoryName = (TextView)itemView.findViewById(R.id.category_name);
             categoryCount = (TextView)itemView.findViewById(R.id.category_counter);
             mContext=context;
+            this.listener=listener;
         }
 
         @Override
         public void onClick(View v) {
-
-            Toast.makeText(mContext,"The Item Clicked is: "+getPosition(), Toast.LENGTH_SHORT).show();
-
+            listener.categorieOnClick(getPosition());
         }
     }
 
     List<Category> categories;
+    public CategoriesAdapterClickListener recListener;
 
-    public CategoriesAdapter(List<Category> categories, Context context){
+    public CategoriesAdapter(List<Category> categories, Context context,CategoriesAdapterClickListener recListener){
         this.categories = categories;
         this.mContext=context;
+        this.recListener=recListener;
+    }
+
+    public interface CategoriesAdapterClickListener {
+        void recyclerViewClick(int position);
     }
 
     @Override
@@ -64,7 +76,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     @Override
     public CategoryViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.category_cardview, viewGroup, false);
-        CategoryViewHolder cvh = new CategoryViewHolder(v,mContext);
+        CategoryViewHolder cvh = new CategoryViewHolder(v,mContext, new CategoryViewHolder.CategorieClickListener(){
+            @Override
+            public void categorieOnClick(int position) {
+                recListener.recyclerViewClick(position);
+            }
+        });
         return cvh;
     }
 

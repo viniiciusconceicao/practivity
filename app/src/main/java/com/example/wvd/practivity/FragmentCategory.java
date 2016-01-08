@@ -1,10 +1,12 @@
 package com.example.wvd.practivity;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +22,7 @@ import java.util.List;
  */
 public class FragmentCategory extends Fragment {
 
-    private static final String TAG = "FragmentCategory";
+    public static final String TAG = "FragmentCategory";
 
     private Context mContext;
 
@@ -45,7 +47,16 @@ public class FragmentCategory extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         initializeData();
         // do your variables initialisations here except Views!!!
-        CategoriesAdapter adapter = new CategoriesAdapter(categories,mContext);
+        CategoriesAdapter adapter = new CategoriesAdapter(categories, mContext, new CategoriesAdapter.CategoriesAdapterClickListener() {
+            @Override
+            public void recyclerViewClick(int position) {
+                try{
+                    ((OnCategoryClickedListener) getActivity()).onCategoryClicked(categories.get(position));
+                }catch (ClassCastException cce){
+                    Log.e(TAG,"Interface not implemented on Activity");
+                }
+            }
+        });
         rv.setAdapter(adapter);
 
         return view;
@@ -59,5 +70,14 @@ public class FragmentCategory extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         // initialise your views
+    }
+
+    public interface OnCategoryClickedListener{
+        public void onCategoryClicked(Category category_clicked);
+    }
+
+    @Override
+    public String toString() {
+        return TAG;
     }
 }

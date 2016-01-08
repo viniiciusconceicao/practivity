@@ -6,11 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wvd.practivity.Data.Activities;
 import com.example.wvd.practivity.Data.Category;
+import com.example.wvd.practivity.MainActivity;
 import com.example.wvd.practivity.R;
 
 import java.util.List;
@@ -21,7 +23,7 @@ import java.util.List;
 
 public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.ActivityViewHolder> {
 
-    private static final String TAG = "ActivitiesADapter";
+    public static final String TAG = "ActivitiesADapter";
 
     private Context mContext;
 
@@ -45,7 +47,6 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.Ac
         public void onClick(View v) {
 
             Toast.makeText(mContext,"The Item Clicked is: "+getPosition(), Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -71,12 +72,11 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.Ac
     @Override
     public void onBindViewHolder(ActivityViewHolder categoryViewHolder, int i) {
         categoryViewHolder.activityName.setText(activities.get(i).getName());
-        //categoryViewHolder.activityCount.setText(String.valueOf(activities.get(i).getActivities().size()));
+        categoryViewHolder.activityCount.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
-
 }
