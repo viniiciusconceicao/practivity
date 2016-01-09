@@ -28,6 +28,35 @@ public class JSONParser {
         this.mContext=context;
     };
 
+    public int getJSONVersion() {
+        InputStream inputStream = mContext.getResources().openRawResource(R.raw.menu_activities);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        int version =-1;
+
+        int ctr;
+        try {
+            ctr = inputStream.read();
+            while (ctr != -1) {
+                byteArrayOutputStream.write(ctr);
+                ctr = inputStream.read();
+            }
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            // Parse the data into jsonobject to get original data in form of json.
+            JSONObject jObject = new JSONObject(byteArrayOutputStream.toString());
+            version = jObject.getInt("version");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return version;
+    }
+
     public ArrayList<Category> readCategories(){
         InputStream inputStream = mContext.getResources().openRawResource(R.raw.menu_activities);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

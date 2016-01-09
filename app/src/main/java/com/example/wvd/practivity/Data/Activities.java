@@ -1,5 +1,7 @@
 package com.example.wvd.practivity.Data;
 
+import java.util.ArrayList;
+
 /**
  * Created by walterjgsp on 06/01/16.
  */
@@ -12,6 +14,11 @@ public class Activities {
 
     public Activities(String name){
         this.name=name;
+    }
+
+    public Activities(String name, int activities_id) {
+        this.name = name;
+        this.activities_id = activities_id;
     }
 
     public int getActivities_id() {

@@ -33,6 +33,7 @@ public class FragmentCategory extends Fragment {
     // you want to use the same images.
     private void initializeData() {
         JSONParser json = new JSONParser(mContext);
+        Log.e(TAG,""+json.getJSONVersion());
         categories = json.readCategories();
     }
 
