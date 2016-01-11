@@ -46,7 +46,7 @@ public class FragmentActivities extends Fragment {
         rv = (RecyclerView) view.findViewById(R.id.rv);
         // 2. set layoutManger
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        // do your variables initialisations here except Views!!!
+        // do your variables initialisations here except Views!
         ActivitiesAdapter adapter = new ActivitiesAdapter(activities,mContext,new ActivitiesAdapter.ActivitiesAdapterClickListener() {
             @Override
             public void recyclerViewClick(int position) {

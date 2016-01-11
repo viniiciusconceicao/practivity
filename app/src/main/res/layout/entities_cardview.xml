@@ -25,7 +25,26 @@
                 android:textSize="20sp"
                 android:text="@string/name_ex"
                 android:gravity="center"
-                android:textColor="@color/black"/>
+                android:textColor="@color/white"
+                android:background="@color/colorPrimaryLight"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary"/>
+
+            <TextView
+                android:padding="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/address_ex"
+                android:id="@+id/entitie_address"/>
+
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/entitie_email"
+                android:text="@string/email_ex"/>
         </LinearLayout>
 
 

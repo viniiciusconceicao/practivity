@@ -29,7 +29,9 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
 
     public static class ActivityViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CardView cv;
-        TextView activityName;
+        TextView entitieName;
+        TextView entitieAddress;
+        TextView entitieEmail;
         Context mContext;
 
         ActivityViewHolder(View itemView, Context context) {
@@ -37,7 +39,9 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
             cv = (CardView) itemView.findViewById(R.id.cv);
             itemView.setClickable(true);
             itemView.setOnClickListener(this);
-            activityName = (TextView) itemView.findViewById(R.id.entitie_name);
+            entitieName = (TextView) itemView.findViewById(R.id.entitie_name);
+            entitieAddress = (TextView) itemView.findViewById(R.id.entitie_address);
+            entitieEmail = (TextView) itemView.findViewById(R.id.entitie_email);
             mContext = context;
         }
 
@@ -70,7 +74,9 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
 
     @Override
     public void onBindViewHolder(ActivityViewHolder categoryViewHolder, int i) {
-        categoryViewHolder.activityName.setText(entities.get(i).getNome());
+        categoryViewHolder.entitieName.setText(entities.get(i).getSigla());
+        categoryViewHolder.entitieAddress.setText(entities.get(i).getEndereco());
+        categoryViewHolder.entitieEmail.setText(entities.get(i).getEmail());
     }
 
     @Override
