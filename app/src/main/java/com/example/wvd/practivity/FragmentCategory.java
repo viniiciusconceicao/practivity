@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.wvd.practivity.Adapter.CategoriesAdapter;
 import com.example.wvd.practivity.Data.Category;
 import com.example.wvd.practivity.Misc.JSONParser;
+import com.example.wvd.practivity.Misc.PreferencesMan;
 
 import java.util.List;
 
@@ -33,6 +34,9 @@ public class FragmentCategory extends Fragment {
     // you want to use the same images.
     private void initializeData() {
         JSONParser json = new JSONParser(mContext);
+        PreferencesMan prefs = new PreferencesMan(mContext);
+        if(prefs.getJSON_version() != json.getJSONVersion())
+            prefs.setJSON_version(json.getJSONVersion());
         Log.e(TAG,""+json.getJSONVersion());
         categories = json.readCategories();
     }

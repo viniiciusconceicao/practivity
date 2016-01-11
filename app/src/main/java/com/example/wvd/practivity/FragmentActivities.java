@@ -36,8 +36,6 @@ public class FragmentActivities extends Fragment {
 
         super.onCreateView(inflater, container, savedInstanceState);
 
-        category = (Category)getArguments().getSerializable(MainActivity.TAG_CATEGORIE);
-        activities = category.getActivities();
         final View view = inflater.inflate(R.layout.category_fragment, container, false);
         // create your view using LayoutInflater
 
@@ -57,6 +55,8 @@ public class FragmentActivities extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity().getApplicationContext();
+        category = (Category)getArguments().getSerializable(MainActivity.TAG_CATEGORIE);
+        activities = category.getActivities();
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState) {

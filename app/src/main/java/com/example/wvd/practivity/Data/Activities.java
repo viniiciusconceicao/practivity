@@ -1,11 +1,12 @@
 package com.example.wvd.practivity.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by walterjgsp on 06/01/16.
  */
-public class Activities {
+public class Activities implements Serializable {
 
     private int activities_id;
     private String name;

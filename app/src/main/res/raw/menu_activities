@@ -1,4 +1,4 @@
-{"version":2,
+{"version":3,
 "categories": [
   {
     "id": "1",
@@ -75,6 +75,9 @@
         },
         {
           "value": "Guitar"
+        },
+        {
+          "value": "Piano"
         },
         {
           "value": "Ukulele"

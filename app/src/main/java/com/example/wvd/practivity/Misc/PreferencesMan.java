@@ -28,5 +28,6 @@ public class PreferencesMan {
     public void setJSON_version(int value){
         SharedPreferences.Editor editor =sharedpreferences.edit();
         editor.putInt(JSON_version_key,value);
+        editor.commit();
     }
 }

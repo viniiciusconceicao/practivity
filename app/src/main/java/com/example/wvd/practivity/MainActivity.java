@@ -40,6 +40,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
 
         mFragmentStack = new Stack<String>();
         prefs = new PreferencesMan(getApplicationContext());
+        Log.e(TAG,""+prefs.getJSON_version());
 
         toolbar = (Toolbar) findViewById(R.id.toolbar); // Attaching the layout to the toolbar object
         setActionBar(toolbar);
