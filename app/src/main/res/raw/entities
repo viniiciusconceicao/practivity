@@ -13,13 +13,33 @@
     },
     {
       "id":2,
-      "nome":"CCAA",
+      "nome":"CCAA - Floresta",
       "sigla":"CCAA",
       "endereco":"A. Flávio dos Santos, 434 Floresta - Belo Horizonte/MG - CEP: 31015-150",
       "email":"floresta@ccaa.com.br",
       "telefone": "(31) 3482-1001",
       "site":"http://www.ccaa.com.br/",
       "atividades":[1,2]
+    },
+    {
+      "id":3,
+      "nome":"Wizard - Pampulha",
+      "sigla":"Wizard",
+      "endereco":"Rua Agenor Goulart Filho, 377 Ouro Preto - Belo Horizonte/MG",
+      "email":"bh-ouropreto@wizard.com.br",
+      "telefone": "(31) 2537-5820",
+      "site":"http://www.wizard.com.br/",
+      "atividades":[1,2,3,4]
+    },
+    {
+      "id":4,
+      "nome":"Pé Descalço Pampulha",
+      "sigla":"PD Pamps",
+      "endereco":"Rua Desembargador Pedro Linício, 113 Ouro Preto, Belo Horizonte/MG - CEP: 31310-650",
+      "email":"contato@pedescalco.com",
+      "telefone": "(31) 3498-8410",
+      "site":"http://www.pedescalco.com.br/",
+      "atividades":[8]
     }
   ]
 }

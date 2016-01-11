@@ -128,11 +128,11 @@ public class JSONParser {
                     if (jsonArrayActivities.getInt(j) == id_atividade){
                         entity_temp.setId(jsonArrayEntities.getJSONObject(i).getInt("id"));
                         entity_temp.setNome(jsonArrayEntities.getJSONObject(i).getString("nome"));
-                        entity_temp.setEmail(jsonArrayActivities.getJSONObject(i).getString("email"));
-                        entity_temp.setSigla(jsonArrayActivities.getJSONObject(i).getString("sigla"));
-                        entity_temp.setEndereco(jsonArrayActivities.getJSONObject(i).getString("endereco"));
-                        entity_temp.setSite(jsonArrayActivities.getJSONObject(i).getString("site"));
-                        entity_temp.setTelefone(jsonArrayActivities.getJSONObject(i).getString("telefone"));
+                        entity_temp.setEmail(jsonArrayEntities.getJSONObject(i).getString("email"));
+                        entity_temp.setSigla(jsonArrayEntities.getJSONObject(i).getString("sigla"));
+                        entity_temp.setEndereco(jsonArrayEntities.getJSONObject(i).getString("endereco"));
+                        entity_temp.setSite(jsonArrayEntities.getJSONObject(i).getString("site"));
+                        entity_temp.setTelefone(jsonArrayEntities.getJSONObject(i).getString("telefone"));
 
                         entitiesArrayList.add(entity_temp);
                         break;

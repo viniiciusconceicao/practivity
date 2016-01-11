@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.wvd.practivity.Adapter.EntitiesAdapter;
 import com.example.wvd.practivity.Data.Activities;
@@ -30,12 +31,12 @@ public class FragmentEntities extends Fragment {
 
     private List<Entities> entities;
     RecyclerView rv;
+    TextView title;
     private Activities activities;
 
     public void initializeData(){
         JSONParser jsonParser = new JSONParser(mContext);
         entities=jsonParser.readEntities(activities.getActivities_id());
-        Log.e(TAG,""+entities.size());
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ public class FragmentEntities extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         final View view = inflater.inflate(R.layout.category_fragment, container, false);
         // create your view using LayoutInflater
+
+        title = (TextView) view.findViewById(R.id.categories_title);
+        title.setText(activities.getName());
 
         rv = (RecyclerView)view.findViewById(R.id.rv);
         // 2. set layoutManger

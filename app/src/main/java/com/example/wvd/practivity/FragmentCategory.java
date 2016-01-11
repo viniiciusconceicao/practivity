@@ -37,7 +37,6 @@ public class FragmentCategory extends Fragment {
         PreferencesMan prefs = new PreferencesMan(mContext);
         if(prefs.getJSON_version() != json.getJSONVersion())
             prefs.setJSON_version(json.getJSONVersion());
-        Log.e(TAG,""+json.getJSONVersion());
         categories = json.readCategories();
     }
 
