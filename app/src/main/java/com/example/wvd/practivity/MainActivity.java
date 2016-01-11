@@ -15,6 +15,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.wvd.practivity.Data.Category;
+import com.example.wvd.practivity.Misc.PreferencesMan;
 
 import java.util.Stack;
 
@@ -30,12 +31,15 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
 
     private FrameLayout fragment1_vertical;
 
+    private PreferencesMan prefs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mFragmentStack = new Stack<String>();
+        prefs = new PreferencesMan(getApplicationContext());
 
         toolbar = (Toolbar) findViewById(R.id.toolbar); // Attaching the layout to the toolbar object
         setActionBar(toolbar);
@@ -48,9 +52,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         mFragmentStack.add(aFrag.toString());
         fragmentTransaction.add(R.id.fragment1_vertical,aFrag,aFrag.toString());
         fragmentTransaction.addToBackStack(aFrag.toString());
-        //fragmentTransaction.replace(R.id.fragment1_vertical, aFrag);
         fragmentTransaction.commit();
-
     }
 
     @Override
@@ -131,6 +133,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
             super.onBackPressed();
         }
     }
+
     private void removeFragment(){
         // remove the current fragment from the stack.
         mFragmentStack.pop();
