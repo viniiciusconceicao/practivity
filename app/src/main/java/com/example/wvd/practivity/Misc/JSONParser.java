@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.example.wvd.practivity.Data.Activities;
 import com.example.wvd.practivity.Data.Category;
+import com.example.wvd.practivity.Data.Entities;
 import com.example.wvd.practivity.R;
 
 import org.json.JSONArray;
@@ -57,6 +58,94 @@ public class JSONParser {
         return version;
     }
 
+    public int countEntitiesActivity(int id_atividade){
+        InputStream inputStream = mContext.getResources().openRawResource(R.raw.entities);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        int count =0;
+
+        int ctr;
+        try {
+            ctr = inputStream.read();
+            while (ctr != -1) {
+                byteArrayOutputStream.write(ctr);
+                ctr = inputStream.read();
+            }
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            // Parse the data into jsonobject to get original data in form of json.
+            JSONObject jObject = new JSONObject(byteArrayOutputStream.toString());
+            JSONArray jsonArrayEntities = jObject.getJSONArray("entities");
+
+            for(int i=0;i<jsonArrayEntities.length();i++){
+
+                JSONArray jsonArrayActivities = jsonArrayEntities.getJSONObject(i).getJSONArray("atividades");
+                for(int j=0;j<jsonArrayActivities.length();j++){
+                    if (jsonArrayActivities.getInt(j) == id_atividade){
+                        count++;
+                        break;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return count;
+    }
+
+    public ArrayList<Entities> readEntities(int id_atividade){
+        InputStream inputStream = mContext.getResources().openRawResource(R.raw.entities);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ArrayList<Entities> entitiesArrayList = new ArrayList<>();
+
+        int ctr;
+        try {
+            ctr = inputStream.read();
+            while (ctr != -1) {
+                byteArrayOutputStream.write(ctr);
+                ctr = inputStream.read();
+            }
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            // Parse the data into jsonobject to get original data in form of json.
+            JSONObject jObject = new JSONObject(byteArrayOutputStream.toString());
+            JSONArray jsonArrayEntities = jObject.getJSONArray("entities");
+
+            for(int i=0;i<jsonArrayEntities.length();i++){
+
+                Entities entity_temp = new Entities();
+
+                JSONArray jsonArrayActivities = jsonArrayEntities.getJSONObject(i).getJSONArray("atividades");
+                for(int j=0;j<jsonArrayActivities.length();j++){
+                    if (jsonArrayActivities.getInt(j) == id_atividade){
+                        entity_temp.setId(jsonArrayEntities.getJSONObject(i).getInt("id"));
+                        entity_temp.setNome(jsonArrayEntities.getJSONObject(i).getString("nome"));
+                        entity_temp.setEmail(jsonArrayActivities.getJSONObject(i).getString("email"));
+                        entity_temp.setSigla(jsonArrayActivities.getJSONObject(i).getString("sigla"));
+                        entity_temp.setEndereco(jsonArrayActivities.getJSONObject(i).getString("endereco"));
+                        entity_temp.setSite(jsonArrayActivities.getJSONObject(i).getString("site"));
+                        entity_temp.setTelefone(jsonArrayActivities.getJSONObject(i).getString("telefone"));
+
+                        entitiesArrayList.add(entity_temp);
+                        break;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return entitiesArrayList;
+    }
+
     public ArrayList<Category> readCategories(){
         InputStream inputStream = mContext.getResources().openRawResource(R.raw.menu_activities);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -89,6 +178,7 @@ public class JSONParser {
                 ArrayList<Activities> activitiesArrayList = new ArrayList<>();
                 for(int j=0;j<jsonArrayActivities.length();j++){
                     Activities activities_temp = new Activities();
+                    activities_temp.setActivities_id(jsonArrayActivities.getJSONObject(j).getInt("id"));
                     activities_temp.setName(jsonArrayActivities.getJSONObject(j).getString("value"));
                     activitiesArrayList.add(activities_temp);
                 }

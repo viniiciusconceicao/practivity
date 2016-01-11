@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,17 @@ public class FragmentActivities extends Fragment {
         // 2. set layoutManger
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         // do your variables initialisations here except Views!!!
-        ActivitiesAdapter adapter = new ActivitiesAdapter(activities,mContext);
+        ActivitiesAdapter adapter = new ActivitiesAdapter(activities,mContext,new ActivitiesAdapter.ActivitiesAdapterClickListener() {
+            @Override
+            public void recyclerViewClick(int position) {
+                try{
+                    ((OnActivityClickedListener) getActivity()).onActivityClicked(activities.get(position));
+                }catch (ClassCastException cce){
+                    Log.e(TAG, "Interface not implemented on Activity");
+                }
+            }
+        });
+
         rv.setAdapter(adapter);
 
         return view;
@@ -62,6 +73,10 @@ public class FragmentActivities extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // initialise your views
+    }
+
+    public interface OnActivityClickedListener{
+        public void onActivityClicked(Activities activities_clicked);
     }
 
     @Override

@@ -14,15 +14,17 @@ import android.widget.SearchView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.example.wvd.practivity.Data.Activities;
 import com.example.wvd.practivity.Data.Category;
 import com.example.wvd.practivity.Misc.PreferencesMan;
 
 import java.util.Stack;
 
-public class MainActivity extends Activity implements FragmentCategory.OnCategoryClickedListener {
+public class MainActivity extends Activity implements FragmentCategory.OnCategoryClickedListener, FragmentActivities.OnActivityClickedListener {
 
     private static final String TAG = "MainActivity";
     public static final String TAG_CATEGORIE = "CAT";
+    public static final String TAG_ACTIVITY = "ACT";
 
     private Toolbar toolbar;
     private SearchView mSearchView;
@@ -40,7 +42,6 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
 
         mFragmentStack = new Stack<String>();
         prefs = new PreferencesMan(getApplicationContext());
-        Log.e(TAG,""+prefs.getJSON_version());
 
         toolbar = (Toolbar) findViewById(R.id.toolbar); // Attaching the layout to the toolbar object
         setActionBar(toolbar);
@@ -104,6 +105,28 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         Bundle bundle = new Bundle();
         bundle.putSerializable(TAG_CATEGORIE, category_clicked);
         Fragment aFrag = new FragmentActivities();
+        aFrag.setArguments(bundle);
+
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.animator.fragment_animation_fade_in, R.animator.fragment_animation_fade_out);
+        //fragmentTransaction.replace(R.id.fragment1_vertical, aFrag).addToBackStack("tag");
+
+        Fragment currentFragment = getFragmentManager().findFragmentByTag(mFragmentStack.peek());
+        fragmentTransaction.hide(currentFragment);
+
+        fragmentTransaction.add(R.id.fragment1_vertical, aFrag, aFrag.toString());
+        fragmentTransaction.addToBackStack(aFrag.toString());
+        mFragmentStack.add(aFrag.toString());
+
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onActivityClicked(Activities activities_clicked) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(TAG_ACTIVITY, activities_clicked);
+
+        Fragment aFrag = new FragmentEntities();
         aFrag.setArguments(bundle);
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();

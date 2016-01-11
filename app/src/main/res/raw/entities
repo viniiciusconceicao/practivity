@@ -1,0 +1,25 @@
+{
+  "version":1,
+  "entities":[
+    {
+      "id":1,
+      "nome":"Centro de Extensão da Faculdade de Letras da UFMG",
+      "sigla":"CENEX",
+      "endereco":"Av. Antônio Carlos, 6627 Pampulha - Belo Horizonte/MG - CEP: 31270-901, Sala 1000C",
+      "email":"cenexatendimento@yahoo.com.br",
+      "telefone":"(31) 3409-6002",
+      "site":"http://www.cenex.letras.ufmg.br/",
+      "atividades":[1,2,3,4]
+    },
+    {
+      "id":2,
+      "nome":"CCAA",
+      "sigla":"CCAA",
+      "endereco":"A. Flávio dos Santos, 434 Floresta - Belo Horizonte/MG - CEP: 31015-150",
+      "email":"floresta@ccaa.com.br",
+      "telefone": "(31) 3482-1001",
+      "site":"http://www.ccaa.com.br/",
+      "atividades":[1,2]
+    }
+  ]
+}
