@@ -5,6 +5,9 @@
     <string name="activities_title">Activities</string>
     <string name="action_settings">Settings</string>
 
+    <string name="address">Address:</string>
+    <string name="site">Site:</string>
+
     <string name="name_ex">Name</string>
     <string name="address_ex">Av. Antônio Carlos, 6627 Pampulha - Belo Horizonte/MG - CEP: 31270-901, Sala 1000C</string>
     <string name="email_ex">blablabla@gmail.com</string>

@@ -171,7 +171,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 act.setActivities_id(c.getInt(c.getColumnIndex(KEY_ID)));
                 act.setName(c.getString(c.getColumnIndex(KEY_NAME)));
 
-                // adding to todo list
+                // adding to activities
                 activitiesArrayList.add(act);
             } while (c.moveToNext());
         }

@@ -37,8 +37,10 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
         CardView cv;
         TextView entitieName;
         TextView entitieAddress;
+        TextView entitieSite;
         LinearLayout entitiesMenu;
         Button entitieCall;
+        Button entitieSend;
         Entities entities;
         Context mContext;
 
@@ -50,14 +52,28 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
             itemView.setOnClickListener(this);
             entitieName = (TextView) itemView.findViewById(R.id.entitie_name);
             entitieAddress = (TextView) itemView.findViewById(R.id.entitie_address);
+            entitieSite = (TextView) itemView.findViewById(R.id.entitie_site);
             entitiesMenu = (LinearLayout) itemView.findViewById(R.id.entitie_menu);
             entitieCall = (Button) itemView.findViewById(R.id.entitie_call_button);
+            entitieSend = (Button) itemView.findViewById(R.id.entitie_email_button);
             this.entities=ent;
+
             entitieCall.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String phone = entities.getTelefone();
                     Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    mContext.startActivity(intent);
+                }
+            });
+
+            entitieSend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String email = entities.getEmail();
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.putExtra(Intent.EXTRA_EMAIL, email);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mContext.startActivity(intent);
                 }
@@ -99,6 +115,7 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
     public void onBindViewHolder(ActivityViewHolder categoryViewHolder, int i) {
         categoryViewHolder.entitieName.setText(entities.get(i).getNome());
         categoryViewHolder.entitieAddress.setText(entities.get(i).getEndereco());
+        categoryViewHolder.entitieSite.setText(entities.get(i).getSite());
     }
 
     @Override

@@ -35,19 +35,45 @@
                 android:layout_height="1dp"
                 android:background="@color/colorPrimary" />
 
-            <TextView
-                android:id="@+id/entitie_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="@string/address_ex" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:id="@+id/entitie_menu"
                 android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address"
+                    android:textColor="@color/black"
+                    android:padding="2dp"/>
+
+                <TextView
+                    android:id="@+id/entitie_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="@string/address_ex" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/site"
+                        android:textColor="@color/black"
+                        android:padding="2dp"/>
+
+                    <TextView
+                        android:id="@+id/entitie_site"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="@string/site_ex" />
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
