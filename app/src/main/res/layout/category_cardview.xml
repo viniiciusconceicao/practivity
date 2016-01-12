@@ -20,8 +20,8 @@
             android:padding="5dp">
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:id="@+id/category_photo"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"

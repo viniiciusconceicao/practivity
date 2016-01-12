@@ -11,6 +11,7 @@ public class Category implements Serializable {
 
     int category_id;
     String name;
+    String icon;
     ArrayList<Activities> activities;
 
     public Category(){
@@ -50,4 +51,11 @@ public class Category implements Serializable {
         this.name = name;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 }

@@ -1,12 +1,14 @@
 package com.example.wvd.practivity.Adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         CardView cv;
         TextView categoryName;
         TextView categoryCount;
+        ImageView categoryIcon;
         Context mContext;
 
         public CategorieClickListener listener;
@@ -45,6 +48,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
             itemView.setOnClickListener(this);
             categoryName = (TextView)itemView.findViewById(R.id.category_name);
             categoryCount = (TextView)itemView.findViewById(R.id.category_counter);
+            categoryIcon = (ImageView)itemView.findViewById(R.id.category_photo);
             mContext=context;
             this.listener=listener;
         }
@@ -89,6 +93,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     public void onBindViewHolder(CategoryViewHolder categoryViewHolder, int i) {
         categoryViewHolder.categoryName.setText(categories.get(i).getName());
         categoryViewHolder.categoryCount.setText(String.valueOf(categories.get(i).getActivities().size()));
+        int resourceId = mContext.getResources().getIdentifier(categories.get(i).getIcon(), "drawable", mContext.getPackageName());
+        categoryViewHolder.categoryIcon.setBackground(mContext.getDrawable(resourceId));
     }
 
     @Override

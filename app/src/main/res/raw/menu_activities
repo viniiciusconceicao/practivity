@@ -2,6 +2,7 @@
 "categories": [
   {
     "id": "1",
+    "icon": "languages",
     "value": "Languages",
       "menuitems": [
         {
@@ -24,6 +25,7 @@
   },
   {
     "id": "2",
+    "icon":"martial_arts",
     "value": "Martial Arts",
     "menuitems": [
       {
@@ -42,6 +44,7 @@
   },
   {
     "id": "3",
+    "icon":"dance",
     "value": "Dance",
     "menuitems": [
       {
@@ -64,6 +67,7 @@
   },
   {
     "id": "4",
+    "icon":"handicraft",
     "value": "Handicraft",
     "menuitems": [
       {
@@ -82,7 +86,8 @@
   },
   {
       "id": "5",
-      "value": "Musical Instrument",
+      "icon":"music",
+      "value": "Music",
       "menuitems": [
         {
           "id":"15",

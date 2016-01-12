@@ -173,6 +173,7 @@ public class JSONParser {
                 Category category_temp = new Category();
                 category_temp.setCategory_id(jsonArrayCategory.getJSONObject(i).getInt("id"));
                 category_temp.setName(jsonArrayCategory.getJSONObject(i).getString("value"));
+                category_temp.setIcon(jsonArrayCategory.getJSONObject(i).getString("icon"));
 
                 JSONArray jsonArrayActivities = jsonArrayCategory.getJSONObject(i).getJSONArray("menuitems");
                 ArrayList<Activities> activitiesArrayList = new ArrayList<>();
