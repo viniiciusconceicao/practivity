@@ -129,7 +129,7 @@ public class JSONParser {
                         entity_temp.setId(jsonArrayEntities.getJSONObject(i).getInt("id"));
                         entity_temp.setNome(jsonArrayEntities.getJSONObject(i).getString("nome"));
                         entity_temp.setEmail(jsonArrayEntities.getJSONObject(i).getString("email"));
-                        entity_temp.setSigla(jsonArrayEntities.getJSONObject(i).getString("sigla"));
+                        entity_temp.setRatio(jsonArrayEntities.getJSONObject(i).getDouble("ratio"));
                         entity_temp.setEndereco(jsonArrayEntities.getJSONObject(i).getString("endereco"));
                         entity_temp.setSite(jsonArrayEntities.getJSONObject(i).getString("site"));
                         entity_temp.setTelefone(jsonArrayEntities.getJSONObject(i).getString("telefone"));

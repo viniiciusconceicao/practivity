@@ -1,11 +1,15 @@
 package com.example.wvd.practivity.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +17,8 @@ import com.example.wvd.practivity.Data.Activities;
 import com.example.wvd.practivity.Data.Entities;
 import com.example.wvd.practivity.Misc.JSONParser;
 import com.example.wvd.practivity.R;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -31,24 +37,41 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
         CardView cv;
         TextView entitieName;
         TextView entitieAddress;
-        TextView entitieEmail;
+        LinearLayout entitiesMenu;
+        Button entitieCall;
+        Entities entities;
         Context mContext;
 
-        ActivityViewHolder(View itemView, Context context) {
+        ActivityViewHolder(View itemView, Context context,Entities ent) {
             super(itemView);
+            mContext = context;
             cv = (CardView) itemView.findViewById(R.id.cv);
             itemView.setClickable(true);
             itemView.setOnClickListener(this);
             entitieName = (TextView) itemView.findViewById(R.id.entitie_name);
             entitieAddress = (TextView) itemView.findViewById(R.id.entitie_address);
-            entitieEmail = (TextView) itemView.findViewById(R.id.entitie_email);
-            mContext = context;
+            entitiesMenu = (LinearLayout) itemView.findViewById(R.id.entitie_menu);
+            entitieCall = (Button) itemView.findViewById(R.id.entitie_call_button);
+            this.entities=ent;
+            entitieCall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String phone = entities.getTelefone();
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    mContext.startActivity(intent);
+                }
+            });
+
         }
 
         @Override
         public void onClick(View v) {
 
-            Toast.makeText(mContext, "The Item Clicked is: " + getPosition(), Toast.LENGTH_SHORT).show();
+            if(entitiesMenu.getVisibility() == View.GONE)
+                entitiesMenu.setVisibility(View.VISIBLE);
+            else
+                entitiesMenu.setVisibility(View.GONE);
         }
     }
 
@@ -68,15 +91,14 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
     @Override
     public ActivityViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.entities_cardview, viewGroup, false);
-        ActivityViewHolder cvh = new ActivityViewHolder(v, mContext);
+        ActivityViewHolder cvh = new ActivityViewHolder(v, mContext,entities.get(i));
         return cvh;
     }
 
     @Override
     public void onBindViewHolder(ActivityViewHolder categoryViewHolder, int i) {
-        categoryViewHolder.entitieName.setText(entities.get(i).getSigla());
+        categoryViewHolder.entitieName.setText(entities.get(i).getNome());
         categoryViewHolder.entitieAddress.setText(entities.get(i).getEndereco());
-        categoryViewHolder.entitieEmail.setText(entities.get(i).getEmail());
     }
 
     @Override

@@ -1,19 +1,20 @@
 package com.example.wvd.practivity.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by walterjgsp on 11/01/16.
  */
-public class Entities {
+public class Entities implements Serializable{
 
     private int id;
     private String nome;
-    private String sigla;
     private String endereco;
     private String site;
     private String telefone;
     private String email;
+    private double ratio;
     ArrayList<Integer> atividades;
 
     public int getId() {
@@ -30,14 +31,6 @@ public class Entities {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getSigla() {
-        return sigla;
-    }
-
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
     }
 
     public String getEndereco() {
@@ -78,5 +71,13 @@ public class Entities {
 
     public void setAtividades(ArrayList<Integer> atividades) {
         this.atividades = atividades;
+    }
+
+    public double getRatio() {
+        return ratio;
+    }
+
+    public void setRatio(double ratio) {
+        this.ratio = ratio;
     }
 }
