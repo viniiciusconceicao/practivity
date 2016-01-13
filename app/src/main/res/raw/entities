@@ -60,6 +60,36 @@
       "site":"http://www.incomodanca.com.br",
       "atividades":[11,12],
       "ratio":5
+    },
+    {
+      "id":7,
+      "nome":"Academia Tatami",
+      "endereco":"R. Irlanda, 288 - Itapoã, Belo Horizonte - MG, 31710-010",
+      "email":"-",
+      "telefone": "(31) 3443-1083",
+      "site":"http://academiatatami.com.br/",
+      "atividades":[5,6],
+      "ratio":5
+    },
+    {
+      "id":8,
+      "nome":"Academia Centurion Fighter Team",
+      "endereco":"Rua Flor de Esparódia, 96 – Bairro Ouro Preto – Pampulha, 31340-050",
+      "email":"-",
+      "telefone": "(31)2516-1235",
+      "site":"http://centurionbh.com.br/contato/",
+      "atividades":[6,7,8],
+      "ratio":4
+    },
+    {
+      "id":9,
+      "nome":"SESI:FIEMG",
+      "endereco":"Rua Álvares Maciel, 59 – Santa Efigênia – BH / MG ",
+      "email":"-",
+      "telefone": "(31) 3241-7175",
+      "site":"http://www7.fiemg.com.br/sesi/centro-de-cultura/belo-horizonte/escola-cultura/detalhe/pintura-em-oleo-sobre-tela",
+      "atividades":[14],
+      "ratio":4
     }
 
 
