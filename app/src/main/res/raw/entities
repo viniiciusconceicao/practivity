@@ -38,8 +38,30 @@
       "email":"contato@pedescalco.com",
       "telefone": "(31) 3498-8410",
       "site":"http://www.pedescalco.com.br/",
-      "atividades":[8],
+      "atividades":[9],
+      "ratio":5
+    },
+    {
+      "id":5,
+      "nome":"Oficina Flamenca",
+      "endereco":"CLN 110 Bloco A lojas 73/77 subsolo, Brasília - DF",
+      "email":"falecomoficinaflamenca@gmail.com",
+      "telefone": "(61) 3273-7374",
+      "site":"http://www.oficinaflamenca.com.br/",
+      "atividades":[10],
+      "ratio":5
+    },
+    {
+      "id":6,
+      "nome":"Incomodanca",
+      "endereco":"Av Pedro II, 2566 - Carlos Prates, Belo Horizonte,MG, 30710-010 Brazil",
+      "email":"contato@incomodanca.com.br",
+      "telefone": "(31) 3411-9354",
+      "site":"http://www.incomodanca.com.br",
+      "atividades":[11,12],
       "ratio":5
     }
+
+
   ]
 }

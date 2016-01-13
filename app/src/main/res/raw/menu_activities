@@ -39,6 +39,10 @@
       {
         "id":"7",
         "value": "Jiu-Jitsu"
+      },
+      {
+        "id":"8",
+        "value": "Boxing"
       }
     ]
   },
@@ -48,19 +52,19 @@
     "value": "Dance",
     "menuitems": [
       {
-        "id":"8",
+        "id":"9",
         "value": "Forró"
       },
       {
-        "id":"9",
+        "id":"10",
         "value": "Flamenco"
       },
       {
-        "id":"10",
+        "id":"11",
         "value": "Samba"
       },
       {
-        "id":"11",
+        "id":"12",
         "value": "Saloon"
       }
     ]
@@ -71,16 +75,20 @@
     "value": "Handicraft",
     "menuitems": [
       {
-        "id":"12",
+        "id":"13",
         "value": "Paper Planes"
       },
       {
-        "id":"13",
+        "id":"14",
         "value": "Paiting"
       },
       {
-        "id":"14",
+        "id":"15",
         "value": "Sculpting"
+      },
+      {
+        "id":"16",
+        "value": "Origami"
       }
     ]
   },
@@ -90,19 +98,19 @@
       "value": "Music",
       "menuitems": [
         {
-          "id":"15",
+          "id":"17",
           "value": "Acoustic Guitar"
         },
         {
-          "id":"16",
+          "id":"18",
           "value": "Guitar"
         },
         {
-          "id":"17",
+          "id":"19",
           "value": "Piano"
         },
         {
-          "id":"18",
+          "id":"20",
           "value": "Ukulele"
         }
       ]
