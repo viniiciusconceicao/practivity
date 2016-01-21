@@ -43,8 +43,8 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.Ac
             cv = (CardView)itemView.findViewById(R.id.cv);
             itemView.setClickable(true);
             itemView.setOnClickListener(this);
-            activityName = (TextView)itemView.findViewById(R.id.category_name);
-            activityCount = (TextView)itemView.findViewById(R.id.category_counter);
+            activityName = (TextView)itemView.findViewById(R.id.activities_name);
+            activityCount = (TextView)itemView.findViewById(R.id.activities_counter);
             mContext=context;
             this.listener=listener;
         }
