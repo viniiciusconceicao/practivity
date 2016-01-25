@@ -16,11 +16,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp">
+            android:padding="5dp">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:id="@+id/category_photo"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
