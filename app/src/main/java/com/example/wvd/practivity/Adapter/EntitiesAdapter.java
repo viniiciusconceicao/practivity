@@ -73,7 +73,10 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
                 public void onClick(View v) {
                     String email = entities.getEmail();
                     Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.putExtra(Intent.EXTRA_EMAIL, email);
+                    intent.setType("plain/text");
+                    intent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, mContext.getResources().getString(R.string.information));
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mContext.startActivity(intent);
                 }

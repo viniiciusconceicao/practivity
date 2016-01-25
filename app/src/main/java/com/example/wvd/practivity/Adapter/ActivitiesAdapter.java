@@ -81,7 +81,7 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.Ac
 
     @Override
     public ActivityViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.category_cardview, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activities_cardview, viewGroup, false);
         ActivityViewHolder cvh = new ActivityViewHolder(v,mContext, new ActivityViewHolder.ActivitiesClickListener(){
             @Override
             public void activityOnClick(int position) {
