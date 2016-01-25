@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,18 +41,29 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Entiti
         LinearLayout entitiesMenu;
         Button entitieCall;
         Button entitieSend;
-        Entities entities;
-        Context mContext;
-        String entitiePhone;
+        Context mContext;;
 
         public EntitiesClickListener listener;
+        public EntitiesCallClickListener callListener;
+        public EntitiesSendClickListener sendListener;
 
         //listener passed to viewHolder
         public interface EntitiesClickListener {
-            void entitieOnClick(int position, LinearLayout clicked);
+            void entitieOnClick(int position,LinearLayout linearLayout);
         }
 
-        EntitiesViewHolder(View itemView, Context context,Entities ent,EntitiesClickListener listener) {
+        //listener passed to viewHolder
+        public interface EntitiesCallClickListener {
+            void entitieOnClick(int position);
+        }
+
+        //listener passed to viewHolder
+        public interface EntitiesSendClickListener {
+            void entitieOnClick(int position);
+        }
+
+        EntitiesViewHolder(View itemView, Context context,EntitiesClickListener listener, final EntitiesCallClickListener callListener,
+                           final EntitiesSendClickListener sendListener) {
             super(itemView);
             mContext = context;
             cv = (CardView) itemView.findViewById(R.id.cv);
@@ -63,30 +75,21 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Entiti
             entitiesMenu = (LinearLayout) itemView.findViewById(R.id.entitie_menu);
             entitieCall = (Button) itemView.findViewById(R.id.entitie_call_button);
             entitieSend = (Button) itemView.findViewById(R.id.entitie_email_button);
-            this.entities=ent;
             this.listener=listener;
+            this.callListener = callListener;
+            this.sendListener = sendListener;
 
             entitieCall.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String phone = entities.getTelefone();
-                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    mContext.startActivity(intent);
+                    callListener.entitieOnClick(getPosition());
                 }
             });
 
             entitieSend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String email = entities.getEmail();
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("plain/text");
-                    intent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
-                    intent.putExtra(Intent.EXTRA_SUBJECT, mContext.getResources().getString(R.string.information));
-                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    mContext.startActivity(intent);
+                   sendListener.entitieOnClick(getPosition());
                 }
             });
 
@@ -122,7 +125,29 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Entiti
     @Override
     public EntitiesViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.entities_cardview, viewGroup, false);
-        EntitiesViewHolder cvh = new EntitiesViewHolder(v, mContext,entities.get(i),new EntitiesViewHolder.EntitiesClickListener(){
+        EntitiesViewHolder.EntitiesSendClickListener entitiesSendClickListener = new EntitiesViewHolder.EntitiesSendClickListener() {
+            @Override
+            public void entitieOnClick(int position) {
+                String email = entities.get(position).getEmail();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("plain/text");
+                intent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
+                intent.putExtra(Intent.EXTRA_SUBJECT, mContext.getResources().getString(R.string.information));
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);
+            }
+        };
+        EntitiesViewHolder.EntitiesCallClickListener entitiesCallClickListener = new EntitiesViewHolder.EntitiesCallClickListener() {
+            @Override
+            public void entitieOnClick(int position) {
+                String phone = entities.get(position).getTelefone();
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);
+            }
+        };
+        EntitiesViewHolder cvh = new EntitiesViewHolder(v, mContext,new EntitiesViewHolder.EntitiesClickListener(){
             @Override
             public void entitieOnClick(int position,LinearLayout clicked) {
                 if(indexOpenCardView!=position){
@@ -147,7 +172,7 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Entiti
                     }
                 }
             }
-        });
+        },entitiesCallClickListener,entitiesSendClickListener);
         return cvh;
     }
 
