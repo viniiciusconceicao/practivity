@@ -1,0 +1,43 @@
+{
+  "version":1,
+  "equipments":[
+    {
+      "id":1,
+      "nome":"Kimono",
+    },
+    {
+      "id":2,
+      "nome":"Dance Shoes",
+    },
+    {
+      "id":3,
+      "nome":"Paper Folding",
+    },
+    {
+      "id":4,
+      "nome":"Oil paint",
+    },
+    {
+      "id":5,
+      "nome":"Air-Hardening Clay",
+    },
+    {
+      "id":6,
+      "nome":"Guitar",
+    },
+    {
+      "id":7,
+      "nome":"Piano",
+    },
+    {
+      "id":8,
+      "nome":"Ukelele",
+    },
+    {
+      "id":9,
+      "nome":"Boxing Gloves",
+    }
+
+
+  ]
+}

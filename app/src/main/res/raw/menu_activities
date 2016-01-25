@@ -7,19 +7,23 @@
       "menuitems": [
         {
           "id":"1",
-          "value": "English"
+          "value": "English",
+          "equipments":[]
         },
         {
           "id":"2",
-          "value": "Spanish"
+          "value": "Spanish",
+          "equipments":[]
         },
         {
           "id":"3",
-          "value": "German"
+          "value": "German",
+          "equipments":[]
         },
         {
           "id":"4",
-          "value": "Italian"
+          "value": "Italian",
+          "equipments":[]
         }
       ]
   },
@@ -30,19 +34,23 @@
     "menuitems": [
       {
         "id":"5",
-        "value": "Judo"
+        "value": "Judo",
+        "equipments":[1]
       },
       {
         "id":"6",
-        "value": "Taekwondo"
+        "value": "Taekwondo",
+        "equipments":[1,9]
       },
       {
         "id":"7",
-        "value": "Jiu-Jitsu"
+        "value": "Jiu-Jitsu",
+        "equipments":[1]
       },
       {
         "id":"8",
-        "value": "Boxing"
+        "value": "Boxing",
+        "equipments":[9]
       }
     ]
   },
@@ -53,19 +61,23 @@
     "menuitems": [
       {
         "id":"9",
-        "value": "Forró"
+        "value": "Forró",
+        "equipments":[2]
       },
       {
         "id":"10",
-        "value": "Flamenco"
+        "value": "Flamenco",
+        "equipments":[2]
       },
       {
         "id":"11",
-        "value": "Samba"
+        "value": "Samba",
+        "equipments":[2]
       },
       {
         "id":"12",
-        "value": "Saloon"
+        "value": "Saloon",
+        "equipments":[2]
       }
     ]
   },
@@ -76,19 +88,23 @@
     "menuitems": [
       {
         "id":"13",
-        "value": "Paper Planes"
+        "value": "Paper Planes",
+        "equipments":[3]
       },
       {
         "id":"14",
-        "value": "Paiting"
+        "value": "Paiting",
+        "equipments":[4]
       },
       {
         "id":"15",
-        "value": "Sculpting"
+        "value": "Sculpting",
+        "equipments":[5]
       },
       {
         "id":"16",
-        "value": "Origami"
+        "value": "Origami",
+        "equipments":[3]
       }
     ]
   },
@@ -99,19 +115,23 @@
       "menuitems": [
         {
           "id":"17",
-          "value": "Acoustic Guitar"
+          "value": "Acoustic Guitar",
+          "equipments":[6]
         },
         {
           "id":"18",
-          "value": "Guitar"
+          "value": "Guitar",
+          "equipments":[6]
         },
         {
           "id":"19",
-          "value": "Piano"
+          "value": "Piano",
+          "equipments":[7]
         },
         {
           "id":"20",
-          "value": "Ukulele"
+          "value": "Ukulele",
+          "equipments":[8]
         }
       ]
     }]
