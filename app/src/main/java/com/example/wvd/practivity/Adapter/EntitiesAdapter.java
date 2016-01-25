@@ -11,29 +11,28 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.wvd.practivity.Data.Activities;
 import com.example.wvd.practivity.Data.Entities;
 import com.example.wvd.practivity.Misc.JSONParser;
 import com.example.wvd.practivity.R;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 /**
  * Created by walterjgsp on 11/01/16.
  */
-public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.ActivityViewHolder> {
+public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.EntitiesViewHolder> {
 
-    public static final String TAG = "EntitiesADapter";
+    public static final String TAG = "EntitiesAdapter";
 
     private Context mContext;
 
     private JSONParser jsonParser;
 
-    public static class ActivityViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private LinearLayout openCardView;
+    private int indexOpenCardView;
+
+    public static class EntitiesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CardView cv;
         TextView entitieName;
         TextView entitieAddress;
@@ -44,7 +43,14 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
         Entities entities;
         Context mContext;
 
-        ActivityViewHolder(View itemView, Context context,Entities ent) {
+        public EntitiesClickListener listener;
+
+        //listener passed to viewHolder
+        public interface EntitiesClickListener {
+            void entitieOnClick(int position, LinearLayout clicked);
+        }
+
+        EntitiesViewHolder(View itemView, Context context,Entities ent,EntitiesClickListener listener) {
             super(itemView);
             mContext = context;
             cv = (CardView) itemView.findViewById(R.id.cv);
@@ -57,6 +63,7 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
             entitieCall = (Button) itemView.findViewById(R.id.entitie_call_button);
             entitieSend = (Button) itemView.findViewById(R.id.entitie_email_button);
             this.entities=ent;
+            this.listener=listener;
 
             entitieCall.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -87,19 +94,23 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
         @Override
         public void onClick(View v) {
 
-            if(entitiesMenu.getVisibility() == View.GONE)
-                entitiesMenu.setVisibility(View.VISIBLE);
-            else
-                entitiesMenu.setVisibility(View.GONE);
+            listener.entitieOnClick(getPosition(),entitiesMenu);
         }
     }
 
     List<Entities> entities;
+    public EntitiesAdapterClickListener recListener;
 
-    public EntitiesAdapter(List<Entities> entities, Context context) {
+    public EntitiesAdapter(List<Entities> entities, Context context,EntitiesAdapterClickListener recListener) {
         this.entities = entities;
         this.mContext = context;
         this.jsonParser = new JSONParser(context);
+        this.recListener=recListener;
+        this.indexOpenCardView = -1;
+    }
+
+    public interface EntitiesAdapterClickListener {
+        void recyclerViewClick(int position);
     }
 
     @Override
@@ -108,14 +119,39 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Activi
     }
 
     @Override
-    public ActivityViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public EntitiesViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.entities_cardview, viewGroup, false);
-        ActivityViewHolder cvh = new ActivityViewHolder(v, mContext,entities.get(i));
+        EntitiesViewHolder cvh = new EntitiesViewHolder(v, mContext,entities.get(i),new EntitiesViewHolder.EntitiesClickListener(){
+            @Override
+            public void entitieOnClick(int position,LinearLayout clicked) {
+                if(indexOpenCardView!=position){
+
+                    try {
+                        openCardView.setVisibility(View.GONE);
+                    }catch (NullPointerException e){
+
+                    }
+
+                    clicked.setVisibility(View.VISIBLE);
+                    openCardView = clicked;
+                    indexOpenCardView = position;
+                }else{
+                    if(clicked.getVisibility() == View.GONE) {
+                        clicked.setVisibility(View.VISIBLE);
+                        indexOpenCardView=position;
+                    }
+                    else {
+                        clicked.setVisibility(View.GONE);
+                        indexOpenCardView=-1;
+                    }
+                }
+            }
+        });
         return cvh;
     }
 
     @Override
-    public void onBindViewHolder(ActivityViewHolder categoryViewHolder, int i) {
+    public void onBindViewHolder(EntitiesViewHolder categoryViewHolder, int i) {
         categoryViewHolder.entitieName.setText(entities.get(i).getNome());
         categoryViewHolder.entitieAddress.setText(entities.get(i).getEndereco());
         categoryViewHolder.entitieSite.setText(entities.get(i).getSite());

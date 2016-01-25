@@ -53,7 +53,12 @@ public class FragmentEntities extends Fragment {
         initializeData();
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         // do your variables initialisations here except Views!!!
-        EntitiesAdapter adapter = new EntitiesAdapter(entities, mContext);
+        EntitiesAdapter adapter = new EntitiesAdapter(entities, mContext, new EntitiesAdapter.EntitiesAdapterClickListener() {
+            @Override
+            public void recyclerViewClick(int position) {
+
+            }
+        });
         rv.setAdapter(adapter);
 
         return view;
