@@ -10,6 +10,7 @@ public class Activities implements Serializable {
 
     private int activities_id;
     private String name;
+    private ArrayList<String> equipaments;
 
     public Activities(){}
 
@@ -36,5 +37,13 @@ public class Activities implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ArrayList<String> getEquipaments() {
+        return equipaments;
+    }
+
+    public void setEquipaments(ArrayList<String> equipaments) {
+        this.equipaments = equipaments;
     }
 }
