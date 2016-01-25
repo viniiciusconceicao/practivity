@@ -42,6 +42,7 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Entiti
         Button entitieSend;
         Entities entities;
         Context mContext;
+        String entitiePhone;
 
         public EntitiesClickListener listener;
 
