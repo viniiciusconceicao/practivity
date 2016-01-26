@@ -133,6 +133,8 @@ public class JSONParser {
                         entity_temp.setEndereco(jsonArrayEntities.getJSONObject(i).getString("endereco"));
                         entity_temp.setSite(jsonArrayEntities.getJSONObject(i).getString("site"));
                         entity_temp.setTelefone(jsonArrayEntities.getJSONObject(i).getString("telefone"));
+                        entity_temp.setLatitude((float)jsonArrayEntities.getJSONObject(i).getDouble("latitude"));
+                        entity_temp.setLongitude((float)jsonArrayEntities.getJSONObject(i).getDouble("longitude"));
 
                         entitiesArrayList.add(entity_temp);
                         break;

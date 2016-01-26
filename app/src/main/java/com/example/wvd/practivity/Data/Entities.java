@@ -15,6 +15,8 @@ public class Entities implements Serializable{
     private String telefone;
     private String email;
     private double ratio;
+    private float longitude;
+    private float latitude;
     ArrayList<Integer> atividades;
 
     public int getId() {
@@ -79,5 +81,21 @@ public class Entities implements Serializable{
 
     public void setRatio(double ratio) {
         this.ratio = ratio;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
     }
 }

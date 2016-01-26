@@ -9,16 +9,20 @@
       "telefone":"(31) 3409-6002",
       "site":"http://www.cenex.letras.ufmg.br/",
       "atividades":[1,2,3,4],
+      "latitude":-19.86564,
+      "longitude":-43.95723,
       "ratio":4.5
     },
     {
       "id":2,
       "nome":"CCAA - Floresta",
-      "endereco":"A. Flávio dos Santos, 434 Floresta - Belo Horizonte/MG - CEP: 31015-150",
+      "endereco":"Av. Flávio dos Santos, 434 Floresta - Belo Horizonte/MG - CEP: 31015-150",
       "email":"floresta@ccaa.com.br",
       "telefone": "(31) 3482-1001",
       "site":"http://www.ccaa.com.br/",
       "atividades":[1,2],
+      "latitude":-19.91289,
+      "longitude":-43.92507,
       "ratio":3.5
     },
     {
@@ -29,6 +33,8 @@
       "telefone": "(31) 2537-5820",
       "site":"http://www.wizard.com.br/",
       "atividades":[1,2,3,4],
+      "latitude":-19.87162,
+      "longitude":-43.98080,
       "ratio":4
     },
     {
@@ -39,6 +45,8 @@
       "telefone": "(31) 3498-8410",
       "site":"http://www.pedescalco.com.br/",
       "atividades":[9],
+      "latitude":-19.87227,
+      "longitude":-43.98361,
       "ratio":5
     },
     {
@@ -49,6 +57,8 @@
       "telefone": "(61) 3273-7374",
       "site":"http://www.oficinaflamenca.com.br/",
       "atividades":[10],
+      "latitude":-15.79423,
+      "longitude":-47.88217,
       "ratio":5
     },
     {
@@ -59,6 +69,8 @@
       "telefone": "(31) 3411-9354",
       "site":"http://www.incomodanca.com.br",
       "atividades":[11,12],
+      "latitude":-19.90947,
+      "longitude":-43.96513,
       "ratio":5
     },
     {
@@ -69,6 +81,8 @@
       "telefone": "(31) 3443-1083",
       "site":"http://academiatatami.com.br/",
       "atividades":[5,6],
+      "latitude":-19.83950,
+      "longitude":-43.96530,
       "ratio":5
     },
     {
@@ -79,6 +93,8 @@
       "telefone": "(31)2516-1235",
       "site":"http://centurionbh.com.br/contato/",
       "atividades":[6,7,8],
+      "latitude":-19.92508,
+      "longitude":-43.92028,
       "ratio":4
     },
     {
@@ -89,9 +105,9 @@
       "telefone": "(31) 3241-7175",
       "site":"http://www7.fiemg.com.br/sesi/centro-de-cultura/belo-horizonte/escola-cultura/detalhe/pintura-em-oleo-sobre-tela",
       "atividades":[14],
+      "latitude":-19.92508,
+      "longitude":-43.92028,
       "ratio":4
     }
-
-
   ]
 }
