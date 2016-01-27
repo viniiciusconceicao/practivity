@@ -2,14 +2,9 @@ package com.example.wvd.practivity;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +12,6 @@ import android.widget.TextView;
 
 import com.example.wvd.practivity.Adapter.EntitiesAdapter;
 import com.example.wvd.practivity.Data.Activities;
-import com.example.wvd.practivity.Data.Category;
 import com.example.wvd.practivity.Data.Entities;
 import com.example.wvd.practivity.Misc.JSONParser;
 
@@ -84,84 +78,4 @@ public class FragmentEntities extends Fragment {
     public String toString() {
         return TAG;
     }
-/*
-    private class AsyncDistance extends AsyncTask<ArrayList<Entities>,Void,Void>{
-
-        protected LocationManager locationManager;
-        public EntitiesLocationListener mEntitiesLocationListener;
-        public double lati = 0.0;
-        public double longi = 0.0;
-
-        public AsyncDistance(Context mContext){
-
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-
-        }
-
-        @Override
-        protected Void doInBackground(ArrayList<Entities>... params) {
-
-            while (this.lati == 0.0) {
-
-            }
-            return null;
-        }
-
-        public class EntitiesLocationListener implements LocationListener {
-
-            @Override
-            public void onLocationChanged(Location location) {
-
-                int lat = (int) location.getLatitude(); // * 1E6);
-                int log = (int) location.getLongitude(); // * 1E6);
-                int acc = (int) (location.getAccuracy());
-
-                String info = location.getProvider();
-                try {
-
-                    // LocatorService.myLatitude=location.getLatitude();
-
-                    // LocatorService.myLongitude=location.getLongitude();
-
-                    lati = location.getLatitude();
-                    longi = location.getLongitude();
-
-                } catch (Exception e) {
-                    // progDailog.dismiss();
-                    // Toast.makeText(getApplicationContext(),"Unable to get Location"
-                    // , Toast.LENGTH_LONG).show();
-                }
-
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-                Log.i("OnProviderDisabled", "OnProviderDisabled");
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-                Log.i("onProviderEnabled", "onProviderEnabled");
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status,
-                                        Bundle extras) {
-                Log.i("onStatusChanged", "onStatusChanged");
-
-            }
-
-        }
-    }*/
 }
