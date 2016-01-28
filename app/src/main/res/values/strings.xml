@@ -1,22 +1,23 @@
 <resources>
     <string name="app_name">Practivity</string>
-    <string name="welcome">Welcome to</string>
+    <string name="welcome" translatable="false">Welcome to</string>
     <string name="category_activities_title">Categories</string>
     <string name="activities_title">Activities</string>
     <string name="action_settings">Settings</string>
 
     <string name="address">Address:</string>
-    <string name="site">Site:</string>
+    <string name="site" translatable="false">Site:</string>
 
-    <string name="name_ex">Name</string>
-    <string name="address_ex">Av. Antônio Carlos, 6627 Pampulha - Belo Horizonte/MG - CEP: 31270-901, Sala 1000C</string>
-    <string name="email_ex">blablabla@gmail.com</string>
-    <string name="site_ex">http://www.asdad.com.br</string>
-    <string name="phone_ex">(31) 12345-9586</string>
+    <string name="name_ex" translatable="false">Name</string>
+    <string name="address_ex" translatable="false">Av. Antônio Carlos, 6627 Pampulha - Belo Horizonte/MG - CEP: 31270-901, Sala 1000C</string>
+    <string name="email_ex" translatable="false">blablabla@gmail.com</string>
+    <string name="site_ex" translatable="false">http://www.asdad.com.br</string>
+    <string name="phone_ex" translatable="false">(31) 12345-9586</string>
 
     <string name="send">Send</string>
     <string name="call">Call</string>
 
     <string name="information">Information</string>
+    <string name="please_connect_to_internet">Please connect to internet</string>
 
 </resources>

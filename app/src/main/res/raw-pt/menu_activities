@@ -1,0 +1,138 @@
+{"version":3,
+"categories": [
+  {
+    "id": "1",
+    "icon": "languages",
+    "value": "Idiomas",
+      "menuitems": [
+        {
+          "id":"1",
+          "value": "Inglês",
+          "equipments":[]
+        },
+        {
+          "id":"2",
+          "value": "Espanhol",
+          "equipments":[]
+        },
+        {
+          "id":"3",
+          "value": "Alemão",
+          "equipments":[]
+        },
+        {
+          "id":"4",
+          "value": "Italiano",
+          "equipments":[]
+        }
+      ]
+  },
+  {
+    "id": "2",
+    "icon":"martial_arts",
+    "value": "Artes Marciais",
+    "menuitems": [
+      {
+        "id":"5",
+        "value": "Judô",
+        "equipments":[1]
+      },
+      {
+        "id":"6",
+        "value": "Taekwondo",
+        "equipments":[1,9]
+      },
+      {
+        "id":"7",
+        "value": "Jiu-Jitsu",
+        "equipments":[1]
+      },
+      {
+        "id":"8",
+        "value": "Boxe",
+        "equipments":[9]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "icon":"dance",
+    "value": "Dança",
+    "menuitems": [
+      {
+        "id":"9",
+        "value": "Forró",
+        "equipments":[2]
+      },
+      {
+        "id":"10",
+        "value": "Flamenco",
+        "equipments":[2]
+      },
+      {
+        "id":"11",
+        "value": "Samba",
+        "equipments":[2]
+      },
+      {
+        "id":"12",
+        "value": "Salão",
+        "equipments":[2]
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "icon":"handicraft",
+    "value": "Artesanato",
+    "menuitems": [
+      {
+        "id":"13",
+        "value": "Aviões de Papel",
+        "equipments":[3]
+      },
+      {
+        "id":"14",
+        "value": "Pintura",
+        "equipments":[4]
+      },
+      {
+        "id":"15",
+        "value": "Escultura",
+        "equipments":[5]
+      },
+      {
+        "id":"16",
+        "value": "Origami",
+        "equipments":[3]
+      }
+    ]
+  },
+  {
+      "id": "5",
+      "icon":"music",
+      "value": "Música",
+      "menuitems": [
+        {
+          "id":"17",
+          "value": "Violão",
+          "equipments":[6]
+        },
+        {
+          "id":"18",
+          "value": "Guitarra",
+          "equipments":[6]
+        },
+        {
+          "id":"19",
+          "value": "Piano",
+          "equipments":[7]
+        },
+        {
+          "id":"20",
+          "value": "Ukulele",
+          "equipments":[8]
+        }
+      ]
+    }]
+}
