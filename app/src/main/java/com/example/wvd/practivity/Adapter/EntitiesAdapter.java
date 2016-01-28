@@ -2,6 +2,7 @@ package com.example.wvd.practivity.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -32,12 +33,14 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Entiti
 
     private LinearLayout openCardView;
     private int indexOpenCardView;
+    private Location userLocation;
 
     public static class EntitiesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CardView cv;
         TextView entitieName;
         TextView entitieAddress;
         TextView entitieSite;
+        TextView entitieDistance;
         LinearLayout entitiesMenu;
         Button entitieCall;
         Button entitieSend;
@@ -72,12 +75,14 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Entiti
             entitieName = (TextView) itemView.findViewById(R.id.entitie_name);
             entitieAddress = (TextView) itemView.findViewById(R.id.entitie_address);
             entitieSite = (TextView) itemView.findViewById(R.id.entitie_site);
+            entitieDistance = (TextView) itemView.findViewById(R.id.entitie_distance);
             entitiesMenu = (LinearLayout) itemView.findViewById(R.id.entitie_menu);
             entitieCall = (Button) itemView.findViewById(R.id.entitie_call_button);
             entitieSend = (Button) itemView.findViewById(R.id.entitie_email_button);
             this.listener=listener;
             this.callListener = callListener;
             this.sendListener = sendListener;
+
 
             entitieCall.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -105,12 +110,15 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Entiti
     List<Entities> entities;
     public EntitiesAdapterClickListener recListener;
 
-    public EntitiesAdapter(List<Entities> entities, Context context,EntitiesAdapterClickListener recListener) {
+    public EntitiesAdapter(List<Entities> entities, Context context,EntitiesAdapterClickListener recListener,double longitude, double latitude) {
         this.entities = entities;
         this.mContext = context;
         this.jsonParser = new JSONParser(context);
         this.recListener=recListener;
         this.indexOpenCardView = -1;
+        this.userLocation = new Location("User Location");
+        userLocation.setLatitude(latitude);
+        userLocation.setLongitude(longitude);
     }
 
     public interface EntitiesAdapterClickListener {
@@ -181,6 +189,22 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Entiti
         categoryViewHolder.entitieName.setText(entities.get(i).getNome());
         categoryViewHolder.entitieAddress.setText(entities.get(i).getEndereco());
         categoryViewHolder.entitieSite.setText(entities.get(i).getSite());
+
+        Location locationB = new Location("Entitie");
+
+        locationB.setLatitude(entities.get(i).getLatitude());
+        locationB.setLongitude(entities.get(i).getLongitude());
+
+        double distance = userLocation.distanceTo(locationB);
+        String distancia;
+        if(distance>1000) {
+            distancia=String.format("%.1f",distance*0.001)+" km";
+        }else {
+            distancia = (int) distance + " m";
+        }
+
+        categoryViewHolder.entitieDistance.setText(distancia);
+
     }
 
     @Override

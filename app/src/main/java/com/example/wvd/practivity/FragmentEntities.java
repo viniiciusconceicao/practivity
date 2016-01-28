@@ -32,6 +32,8 @@ public class FragmentEntities extends Fragment {
     RecyclerView rv;
     TextView title;
     private Activities activities;
+    private double longitude;
+    private double latitude;
 
     public void initializeData(){
         JSONParser jsonParser = new JSONParser(mContext);
@@ -55,9 +57,8 @@ public class FragmentEntities extends Fragment {
         EntitiesAdapter adapter = new EntitiesAdapter(entities, mContext, new EntitiesAdapter.EntitiesAdapterClickListener() {
             @Override
             public void recyclerViewClick(int position) {
-
             }
-        });
+        },longitude,latitude);
         rv.setAdapter(adapter);
 
         return view;
@@ -67,6 +68,8 @@ public class FragmentEntities extends Fragment {
         super.onCreate(savedInstanceState);
         mContext = getActivity().getApplicationContext();
         activities = (Activities) getArguments().getSerializable(MainActivity.TAG_ACTIVITY);
+        latitude = getArguments().getDouble(MainActivity.TAG_LATIT);
+        longitude = getArguments().getDouble(MainActivity.TAG_LONGI);
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState){

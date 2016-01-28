@@ -35,6 +35,8 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
     private static final String TAG = "MainActivity";
     public static final String TAG_CATEGORIE = "CAT";
     public static final String TAG_ACTIVITY = "ACT";
+    public static final String TAG_LONGI = "LONG";
+    public static final String TAG_LATIT = "LATI";
 
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
 
@@ -161,6 +163,8 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
     public void onActivityClicked(Activities activities_clicked) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(TAG_ACTIVITY, activities_clicked);
+        bundle.putDouble(TAG_LATIT,latitude);
+        bundle.putDouble(TAG_LONGI,longitude);
 
         Fragment aFrag = new FragmentEntities();
         aFrag.setArguments(bundle);
@@ -277,7 +281,6 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         if (mLastLocation != null) {
             latitude = mLastLocation.getLatitude();
             longitude = mLastLocation.getLongitude();
-            Log.e(TAG,latitude + ", " + longitude);
         } else {
             Log.e(TAG,"(Couldn't get the location. Make sure location is enabled on the device)");
         }

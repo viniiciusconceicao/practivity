@@ -13,6 +13,7 @@
     <string name="email_ex" translatable="false">blablabla@gmail.com</string>
     <string name="site_ex" translatable="false">http://www.asdad.com.br</string>
     <string name="phone_ex" translatable="false">(31) 12345-9586</string>
+    <string name="distance_ex" translatable="false">4,5km</string>
 
     <string name="send">Send</string>
     <string name="call">Call</string>
