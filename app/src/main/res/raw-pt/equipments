@@ -7,23 +7,23 @@
     },
     {
       "id":2,
-      "nome":"Dance Shoes"
+      "nome":"Sapatos de dança"
     },
     {
       "id":3,
-      "nome":"Paper Folding"
+      "nome":"Dobradura de Papel"
     },
     {
       "id":4,
-      "nome":"Oil paint"
+      "nome":"Oléo para pintura"
     },
     {
       "id":5,
-      "nome":"Air-Hardening Clay"
+      "nome":"Endurecedor de Argila"
     },
     {
       "id":6,
-      "nome":"Guitar"
+      "nome":"Violão"
     },
     {
       "id":7,
@@ -35,7 +35,7 @@
     },
     {
       "id":9,
-      "nome":"Boxing Gloves"
+      "nome":"Luvas de Boxe"
     }
   ]
 }

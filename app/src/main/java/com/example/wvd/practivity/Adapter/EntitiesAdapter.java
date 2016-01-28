@@ -189,13 +189,7 @@ public class EntitiesAdapter extends RecyclerView.Adapter<EntitiesAdapter.Entiti
         categoryViewHolder.entitieName.setText(entities.get(i).getNome());
         categoryViewHolder.entitieAddress.setText(entities.get(i).getEndereco());
         categoryViewHolder.entitieSite.setText(entities.get(i).getSite());
-
-        Location locationB = new Location("Entitie");
-
-        locationB.setLatitude(entities.get(i).getLatitude());
-        locationB.setLongitude(entities.get(i).getLongitude());
-
-        double distance = userLocation.distanceTo(locationB);
+        double distance = entities.get(i).getDistancefromUser();
         String distancia;
         if(distance>1000) {
             distancia=String.format("%.1f",distance*0.001)+" km";

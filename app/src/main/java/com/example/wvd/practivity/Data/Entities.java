@@ -17,7 +17,12 @@ public class Entities implements Serializable{
     private double ratio;
     private float longitude;
     private float latitude;
+    private double distancefromUser;
     ArrayList<Integer> atividades;
+
+    public Entities(){
+        distancefromUser=0;
+    }
 
     public int getId() {
         return id;
@@ -97,5 +102,13 @@ public class Entities implements Serializable{
 
     public void setLatitude(float latitude) {
         this.latitude = latitude;
+    }
+
+    public double getDistancefromUser() {
+        return distancefromUser;
+    }
+
+    public void setDistancefromUser(double distancefromUser) {
+        this.distancefromUser = distancefromUser;
     }
 }
