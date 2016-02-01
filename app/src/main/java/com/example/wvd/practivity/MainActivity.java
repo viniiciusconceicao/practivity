@@ -72,7 +72,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         setActionBar(toolbar);
         toolbar.setLayoutTransition(new LayoutTransition());
         //toolbar.setLogo(R.mipmap.ic_launcher);
-        //this.setTitle(null);
+        this.setTitle(null);
 
         fragment1_vertical = (FrameLayout) findViewById(R.id.fragment1_vertical);
 
