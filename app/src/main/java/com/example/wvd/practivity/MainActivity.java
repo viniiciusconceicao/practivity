@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -25,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -71,7 +73,9 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         toolbar = (Toolbar) findViewById(R.id.toolbar); // Attaching the layout to the toolbar object
         setActionBar(toolbar);
         toolbar.setLayoutTransition(new LayoutTransition());
-        //toolbar.setLogo(R.mipmap.ic_launcher);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/lobster.ttf");
+        TextView toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        toolbarTitle.setTypeface(custom_font);
         this.setTitle(null);
 
         fragment1_vertical = (FrameLayout) findViewById(R.id.fragment1_vertical);
