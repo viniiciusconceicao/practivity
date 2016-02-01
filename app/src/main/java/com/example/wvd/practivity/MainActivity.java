@@ -1,5 +1,6 @@
 package com.example.wvd.practivity;
 
+import android.Manifest;
 import android.animation.LayoutTransition;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,6 +15,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.os.Bundle;
@@ -69,6 +71,8 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         toolbar = (Toolbar) findViewById(R.id.toolbar); // Attaching the layout to the toolbar object
         setActionBar(toolbar);
         toolbar.setLayoutTransition(new LayoutTransition());
+        //toolbar.setLogo(R.mipmap.ic_launcher);
+        //this.setTitle(null);
 
         fragment1_vertical = (FrameLayout) findViewById(R.id.fragment1_vertical);
 
@@ -85,6 +89,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         if (checkPlayServices()) {
             // Building the GoogleApi client
             buildGoogleApiClient();
+
         }
     }
 
@@ -258,6 +263,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
     public void onConnectionFailed(ConnectionResult result) {
         Log.i(TAG, "Connection failed: ConnectionResult.getErrorCode() = "
                 + result.getErrorCode());
+
     }
 
     @Override
@@ -282,8 +288,17 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         if (Build.VERSION.SDK_INT >= 23 &&
                 ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
+
+            // Request missing location permission.
+            ActivityCompat.requestPermissions(this  ,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},2);
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},2);
+            //return;
         }
+
+        if(mGoogleApiClient == null)
+            Log.e(TAG,"MERDA");
 
         mLastLocation = LocationServices.FusedLocationApi
                 .getLastLocation(mGoogleApiClient);
@@ -294,8 +309,8 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
 
             prefs.setLocation(mLastLocation);
         } else {
-            mLastLocation = prefs.getLocation();
             Log.e(TAG, "(Couldn't get the location. Make sure location is enabled on the device)");
+            mLastLocation = prefs.getLocation();
         }
     }
 
