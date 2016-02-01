@@ -20,5 +20,11 @@
 
     <string name="information">Information</string>
     <string name="please_connect_to_internet">Please connect to internet</string>
+    
+    <string name="gps_not_found_message">Want to enable?</string>
+    <string name="gps_not_found_title">GPS not found</string>
+    <string name="last_saved_location">Last saved location being used</string>
+    <string name="yes" translatable="false">Yes</string>
+    <string name="no">No</string>
 
 </resources>

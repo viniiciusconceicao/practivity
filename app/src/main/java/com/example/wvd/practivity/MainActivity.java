@@ -2,15 +2,22 @@ package com.example.wvd.practivity;
 
 import android.animation.LayoutTransition;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -63,12 +70,14 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         setActionBar(toolbar);
         toolbar.setLayoutTransition(new LayoutTransition());
 
-        fragment1_vertical = (FrameLayout)findViewById(R.id.fragment1_vertical);
+        fragment1_vertical = (FrameLayout) findViewById(R.id.fragment1_vertical);
+
+        EnableGPS();
 
         Fragment aFrag = new FragmentCategory();
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         mFragmentStack.add(aFrag.toString());
-        fragmentTransaction.add(R.id.fragment1_vertical,aFrag,aFrag.toString());
+        fragmentTransaction.add(R.id.fragment1_vertical, aFrag, aFrag.toString());
         fragmentTransaction.addToBackStack(aFrag.toString());
         fragmentTransaction.commit();
 
@@ -113,7 +122,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        switch(id) {
+        switch (id) {
             case R.id.action_settings:
                 return true;
             case R.id.action_search:
@@ -163,8 +172,8 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
     public void onActivityClicked(Activities activities_clicked) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(TAG_ACTIVITY, activities_clicked);
-        bundle.putDouble(TAG_LATIT,latitude);
-        bundle.putDouble(TAG_LONGI,longitude);
+        bundle.putDouble(TAG_LATIT, latitude);
+        bundle.putDouble(TAG_LONGI, longitude);
 
         Fragment aFrag = new FragmentEntities();
         aFrag.setArguments(bundle);
@@ -184,21 +193,20 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         // from the stack we can get the latest fragment
         Fragment fragment = getFragmentManager().findFragmentByTag(mFragmentStack.peek());
         // If its an instance of Fragment1 I don't want to finish my activity, so I launch a Toast instead.
-        if (fragment instanceof FragmentCategory){
+        if (fragment instanceof FragmentCategory) {
             finish();
-        }
-        else{
+        } else {
             // Remove the framg
             removeFragment();
             super.onBackPressed();
         }
     }
 
-    private void removeFragment(){
+    private void removeFragment() {
         // remove the current fragment from the stack.
         mFragmentStack.pop();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -214,7 +222,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
     //GPS LOCATION FUNCTIONS
     /**
      * Creating google api client object
-     * */
+     */
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -224,7 +232,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
 
     /**
      * Method to verify google play services on the device
-     * */
+     */
     private boolean checkPlayServices() {
         int resultCode = GooglePlayServicesUtil
                 .isGooglePlayServicesAvailable(this);
@@ -266,13 +274,15 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
 
     /**
      * Method to get the Location
-     * */
+     */
     private void getLocation() {
 
-        if ( Build.VERSION.SDK_INT >= 23 &&
-                ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED &&
+        PreferencesMan prefs = new PreferencesMan(getApplicationContext());
+
+        if (Build.VERSION.SDK_INT >= 23 &&
+                ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return  ;
+            return;
         }
 
         mLastLocation = LocationServices.FusedLocationApi
@@ -281,9 +291,34 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         if (mLastLocation != null) {
             latitude = mLastLocation.getLatitude();
             longitude = mLastLocation.getLongitude();
+
+            prefs.setLocation(mLastLocation);
         } else {
-            Log.e(TAG,"(Couldn't get the location. Make sure location is enabled on the device)");
+            mLastLocation = prefs.getLocation();
+            Log.e(TAG, "(Couldn't get the location. Make sure location is enabled on the device)");
         }
     }
 
+    public void EnableGPS(){
+       LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);if( !locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.gps_not_found_title);  // GPS not found
+            builder.setMessage(R.string.gps_not_found_message); // Want to enable?
+            builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                }
+            });
+            builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    PreferencesMan prefs = new PreferencesMan(getApplicationContext());
+                    mLastLocation = prefs.getLocation();
+                    Toast.makeText(getApplicationContext(), R.string.last_saved_location, Toast.LENGTH_LONG);
+                }
+            });
+            builder.create().show();
+            return;
+        }
+    }
 }

@@ -9,4 +9,9 @@
     <string name="action_settings">Configuração</string>
     <string name="call">Ligar</string>
     <string name="send">Enviar</string>
+    <string name="gps_not_found_title">GPS não encontrado</string>
+    <string name="gps_not_found_message">Quer habilitar?</string>
+    <string name="last_saved_location">Última localização sendo utilizada</string>
+    <string name="no">Não</string>
+    <string name="yes" translatable="false">Sim</string>
 </resources>
