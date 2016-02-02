@@ -5,6 +5,7 @@ import android.animation.LayoutTransition;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -35,6 +36,8 @@ import android.widget.Toolbar;
 
 import com.example.wvd.practivity.Data.Activities;
 import com.example.wvd.practivity.Data.Category;
+import com.example.wvd.practivity.Misc.AddActivityDialogFragment;
+import com.example.wvd.practivity.Misc.AddCategoryDialogFragment;
 import com.example.wvd.practivity.Misc.PreferencesMan;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -88,7 +91,15 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), mFragmentStack.peek(), Toast.LENGTH_SHORT).show();
+                FragmentManager fm = getFragmentManager();
+
+                if(mFragmentStack.peek()==FragmentCategory.TAG){
+                    AddCategoryDialogFragment addCategory = new AddCategoryDialogFragment();
+                    addCategory.show(fm,AddCategoryDialogFragment.TAG);
+                }else if(mFragmentStack.peek()==FragmentActivities.TAG){
+                    AddActivityDialogFragment addActivity = new  AddActivityDialogFragment();
+                    addActivity.show(fm,AddCategoryDialogFragment.TAG);
+                }
             }
         });
 

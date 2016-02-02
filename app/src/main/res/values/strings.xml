@@ -27,4 +27,10 @@
     <string name="yes" translatable="false">Yes</string>
     <string name="no">No</string>
 
+    <string name="addCategoryTitle">What category we should add?</string>
+    <string name="addActivityTitle">What activity you think is missing?</string>
+    <string name="category">Category:</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">add</string>
+
 </resources>
