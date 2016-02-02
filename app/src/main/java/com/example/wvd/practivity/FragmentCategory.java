@@ -72,35 +72,6 @@ public class FragmentCategory extends Fragment {
         mContext = getActivity().getApplicationContext();
     }
 
-    @Override
-    public void setUserVisibleHint(boolean visible)
-    {
-        super.setUserVisibleHint(visible);
-        if (visible && isResumed())
-        {
-            onResume();
-        }
-    }
-
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-        if (!getUserVisibleHint())
-        {
-            return;
-        }
-
-        MainActivity mainActivity = (MainActivity)getActivity();
-        mainActivity.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Do what you want
-                Toast.makeText(mContext, TAG, Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         // initialise your views

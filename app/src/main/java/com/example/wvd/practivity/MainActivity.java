@@ -25,6 +25,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.SearchView;
@@ -65,7 +66,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
     private double latitude;
     private double longitude;
 
-    public ImageButton fab;
+    private ImageButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,12 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
 
         fragment1_vertical = (FrameLayout) findViewById(R.id.fragment1_vertical);
         fab = (ImageButton) findViewById(R.id.fabButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), mFragmentStack.peek(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         EnableGPS();
 
@@ -338,7 +345,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
                 public void onClick(DialogInterface dialog, int which) {
                     PreferencesMan prefs = new PreferencesMan(getApplicationContext());
                     mLastLocation = prefs.getLocation();
-                    Toast.makeText(getApplicationContext(), R.string.last_saved_location, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.last_saved_location, Toast.LENGTH_SHORT).show();
                 }
             });
             builder.create().show();

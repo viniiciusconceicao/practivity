@@ -27,7 +27,7 @@
             android:layout_height="70dp"
             android:src="@drawable/plus"
             android:background="@drawable/fab_button"
-            android:id="@+id/imageButton"
+            android:id="@+id/fabButton"
             android:layout_gravity="right|bottom" />
     </FrameLayout>
 
