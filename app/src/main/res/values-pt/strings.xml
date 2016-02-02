@@ -14,4 +14,9 @@
     <string name="last_saved_location">Última localização sendo utilizada</string>
     <string name="no">Não</string>
     <string name="yes" translatable="false">Sim</string>
+    <string name="cancel">Cancelar</string>
+    <string name="category"></string>
+    <string name="add">Adicionar</string>
+    <string name="addActivityTitle">Qual atividade você acha que está faltando?</string>
+    <string name="addCategoryTitle">Qual categoria gostaria que fosse adicionada?</string>
 </resources>
