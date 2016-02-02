@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
+import android.widget.Toast;
 import com.example.wvd.practivity.Adapter.ActivitiesAdapter;
 import com.example.wvd.practivity.Adapter.CategoriesAdapter;
 import com.example.wvd.practivity.Data.Activities;
@@ -68,6 +69,35 @@ public class FragmentActivities extends Fragment {
         mContext = getActivity().getApplicationContext();
         category = (Category)getArguments().getSerializable(MainActivity.TAG_CATEGORIE);
         activities = category.getActivities();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean visible)
+    {
+        super.setUserVisibleHint(visible);
+        if (visible && isResumed())
+        {
+            onResume();
+        }
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        if (!getUserVisibleHint())
+        {
+            return;
+        }
+
+        MainActivity mainActivity = (MainActivity)getActivity();
+        mainActivity.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Do what you want
+                Toast.makeText(mContext, TAG, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState) {

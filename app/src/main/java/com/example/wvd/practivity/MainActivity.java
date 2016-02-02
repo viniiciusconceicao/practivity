@@ -14,6 +14,7 @@ import android.graphics.Typeface;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.Image;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -25,6 +26,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +65,8 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
     private double latitude;
     private double longitude;
 
+    public ImageButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +83,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
         this.setTitle(null);
 
         fragment1_vertical = (FrameLayout) findViewById(R.id.fragment1_vertical);
+        fab = (ImageButton) findViewById(R.id.fabButton);
 
         EnableGPS();
 
@@ -333,7 +338,7 @@ public class MainActivity extends Activity implements FragmentCategory.OnCategor
                 public void onClick(DialogInterface dialog, int which) {
                     PreferencesMan prefs = new PreferencesMan(getApplicationContext());
                     mLastLocation = prefs.getLocation();
-                    Toast.makeText(getApplicationContext(), R.string.last_saved_location, Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(), R.string.last_saved_location, Toast.LENGTH_LONG).show();
                 }
             });
             builder.create().show();

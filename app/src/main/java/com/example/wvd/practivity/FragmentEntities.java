@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import android.widget.Toast;
 import com.example.wvd.practivity.Adapter.EntitiesAdapter;
 import com.example.wvd.practivity.Data.Activities;
 import com.example.wvd.practivity.Data.Entities;
@@ -88,6 +89,35 @@ public class FragmentEntities extends Fragment {
         userLocation = new Location("UserLocation");
         userLocation.setLongitude(longitude);
         userLocation.setLatitude(latitude);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean visible)
+    {
+        super.setUserVisibleHint(visible);
+        if (visible && isResumed())
+        {
+            onResume();
+        }
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        if (!getUserVisibleHint())
+        {
+            return;
+        }
+
+        MainActivity mainActivity = (MainActivity)getActivity();
+        mainActivity.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Do what you want
+                Toast.makeText(mContext, TAG, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState){
